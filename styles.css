@@ -232,18 +232,8 @@ a.store-badge:hover { transform: translateY(-1px); }
 }
 .rotator.out { opacity: 0; transform: translateY(6px); }
 
-.hero-meta {
-  display: flex;
-  flex-wrap: wrap;
-  gap: 8px 18px;
-  margin-top: 26px;
-  font-size: 0.84rem;
-  color: var(--text-2);
-}
-.hero-meta span { display: inline-flex; align-items: center; gap: 6px; }
-.hero-meta svg { width: 15px; height: 15px; color: var(--accent); }
 
-/* Visuel : halo + figure + téléphone */
+/* Visuel : bulles + téléphone */
 .hero-visual {
   position: relative;
   display: flex;
@@ -252,22 +242,6 @@ a.store-badge:hover { transform: translateY(-1px); }
   min-height: 640px;
 }
 
-.halo {
-  position: absolute;
-  top: 40px;
-  left: 50%;
-  width: 470px;
-  max-width: 120%;
-  transform: translateX(-50%);
-  opacity: 0.42;
-  filter: saturate(0.85) blur(0.3px);
-  animation: float 9s ease-in-out infinite;
-  pointer-events: none;
-}
-@keyframes float {
-  0%, 100% { transform: translate(-50%, 0); }
-  50% { transform: translate(-50%, -12px); }
-}
 
 .goal-chip {
   position: absolute;
@@ -588,35 +562,6 @@ section { padding: 100px 0; }
 .not-item .x { font-family: var(--serif); font-style: italic; font-size: 1.25rem; color: rgba(245, 240, 250, 0.8); text-decoration: line-through; text-decoration-thickness: 1px; text-decoration-color: rgba(230, 207, 224, 0.75); margin-bottom: 10px; }
 .not-item p { font-size: 0.94rem; color: rgba(245, 240, 250, 0.88); }
 
-/* Tarifs */
-.pricing-grid { display: grid; grid-template-columns: 1fr 1fr; gap: 22px; max-width: 760px; margin: 0 auto; }
-.price { padding: 34px 30px; position: relative; display: flex; flex-direction: column; }
-.price.featured { background: var(--surface-strong); box-shadow: var(--shadow-lg), 0 0 0 2px var(--accent); }
-.price-tag {
-  position: absolute; top: -13px; left: 30px;
-  background: var(--accent); color: #fff;
-  font-size: 0.72rem; font-weight: 600; letter-spacing: 0.08em; text-transform: uppercase;
-  padding: 5px 12px; border-radius: 999px;
-}
-.price h3 { font-size: 1.5rem; margin-bottom: 4px; }
-.price .amount { font-family: var(--serif); font-size: 3rem; line-height: 1.1; margin: 10px 0 2px; }
-.price .amount small { font-family: var(--sans); font-size: 0.95rem; color: var(--text-2); }
-.price .per { color: var(--text-muted); font-size: 0.88rem; min-height: 1.4em; }
-.price ul { list-style: none; margin: 22px 0 0; display: flex; flex-direction: column; gap: 10px; }
-.price li { display: flex; gap: 10px; font-size: 0.94rem; color: var(--text-3); }
-.price li svg { flex: none; width: 18px; height: 18px; color: var(--accent); margin-top: 3px; }
-.trial-banner {
-  max-width: 760px; margin: 0 auto 26px;
-  display: flex; align-items: center; justify-content: center; gap: 10px;
-  padding: 14px 20px;
-  border-radius: 999px;
-  background: var(--surface-strong);
-  border: 1px solid var(--border);
-  font-size: 0.95rem;
-  text-align: center;
-}
-.trial-banner b { color: var(--accent); }
-.pricing-note { max-width: 620px; margin: 26px auto 0; text-align: center; font-size: 0.82rem; color: var(--text-fine); }
 
 /* FAQ */
 .faq-list { max-width: 760px; margin: 0 auto; display: flex; flex-direction: column; gap: 10px; }
@@ -740,25 +685,6 @@ section { padding: 100px 0; }
 }
 .kbd { font-weight: 600; color: var(--text-3); }
 
-.crisis {
-  max-width: 860px; margin: 70px auto 0;
-  padding: 34px;
-  border-radius: var(--radius);
-  background: var(--surface-strong);
-  border: 1px solid rgba(180, 72, 90, 0.18);
-  box-shadow: var(--shadow);
-}
-.crisis-head { display: flex; gap: 16px; align-items: flex-start; margin-bottom: 18px; }
-.crisis-head .ic { width: 48px; height: 48px; border-radius: 50%; flex: none; display: grid; place-items: center; background: rgba(180, 72, 90, 0.1); color: #B4485A; }
-.crisis-head .ic svg { width: 22px; height: 22px; }
-.crisis h2 { font-size: 1.6rem; margin-bottom: 4px; }
-.crisis-head p { color: var(--text-2); font-size: 0.95rem; }
-.lines { display: grid; grid-template-columns: repeat(3, 1fr); gap: 10px; }
-.line { padding: 12px 14px; border-radius: 14px; background: var(--bg-mid); font-size: 0.88rem; }
-.line b { display: block; font-size: 1.05rem; color: var(--text); }
-.line span { color: var(--text-2); }
-.crisis-foot { margin-top: 16px; font-size: 0.88rem; color: var(--text-2); }
-.crisis-foot a { color: var(--accent); font-weight: 600; }
 
 /* 404 */
 .notfound { min-height: 70vh; display: grid; place-items: center; text-align: center; padding: 60px 0; }
@@ -782,7 +708,6 @@ section { padding: 100px 0; }
   .hero-sub { margin-left: auto; margin-right: auto; }
   .hero-visual { text-align: left; }
   .hero-cta { display: flex; flex-direction: column; align-items: center; }
-  .hero-meta { justify-content: center; }
   .goal-chip.c1 { left: 4%; }
   .goal-chip.c2 { right: 2%; }
   .goal-chip.c3 { left: 6%; }
@@ -801,14 +726,13 @@ section { padding: 100px 0; }
   .container { padding: 0 16px; }
   .hero { padding: 36px 0 60px; }
   .hero-visual { min-height: 580px; }
-  .halo { width: 360px; max-width: 96%; top: 30px; }
   .goal-chip { max-width: 170px; font-size: 0.86rem; padding: 8px 11px; }
   .goal-chip.c1 { top: 40px; left: 0; }
   .goal-chip.c2 { display: none; }
   .goal-chip.c3 { bottom: 20px; left: 0; }
   .phone { width: 270px; height: 550px; border-radius: 44px; }
   .phone-screen { border-radius: 34px; }
-  .steps, .ritual-grid, .features-grid, .pricing-grid, .not-grid { grid-template-columns: 1fr; }
+  .steps, .ritual-grid, .features-grid, .not-grid { grid-template-columns: 1fr; }
   .slot { padding: 28px 22px; }
   .final-card { grid-template-columns: 1fr; padding: 36px 24px; text-align: center; }
   .final-card p { margin-left: auto; margin-right: auto; }
@@ -817,14 +741,10 @@ section { padding: 100px 0; }
   .footer-brand { grid-column: 1 / -1; }
   .mobile-cta { display: flex; }
   body.has-mobile-cta { padding-bottom: 84px; }
-  .lines { grid-template-columns: 1fr 1fr; }
-  .crisis { padding: 24px 20px; }
   .topics { grid-template-columns: 1fr 1fr; gap: 12px; }
-  .trial-banner { border-radius: 18px; }
 }
 
 @media (max-width: 420px) {
   .topics { grid-template-columns: 1fr; }
-  .lines { grid-template-columns: 1fr; }
   .phone { width: 252px; height: 516px; }
 }
