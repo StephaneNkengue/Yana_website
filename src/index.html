@@ -1,0 +1,374 @@
+<!DOCTYPE html>
+<!-- Source : `python3 scripts/build.py` génère index.html, support.html et fr/ à partir de ce fichier. -->
+<html lang="{{lang}}">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title data-fr="Yana — App de manifestation et d'affirmations au quotidien">Yana — Daily Manifestation &amp; Affirmations App</title>
+<meta name="description" content="Yana writes two short audio sessions a day for your goal: visualization, personalized affirmations and one small mission. For confidence, discipline, career and money." data-fr-content="Yana écrit deux courtes séances audio par jour pour ton objectif : visualisation, affirmations personnalisées et une petite mission. Confiance, discipline, carrière, argent.">
+{{seo}}
+<link rel="icon" type="image/png" href="/assets/favicon.png">
+<link rel="apple-touch-icon" href="/assets/apple-touch-icon.png">
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Newsreader:ital,opsz,wght@0,6..72,400;1,6..72,400&display=swap" rel="stylesheet">
+<link rel="stylesheet" href="/styles.css">
+</head>
+<body class="has-mobile-cta">
+
+<header class="site-header">
+  <div class="container header-inner">
+    <a href="#top" class="logo" aria-label="Yana">Yana</a>
+    <nav class="nav" aria-label="Main">
+      <a href="#how" data-fr="Comment ça marche">How it works</a>
+      <a href="#ritual" data-fr="Le rituel">The ritual</a>
+      <a href="#journey" data-fr="Le parcours">The journey</a>
+      <a href="{{base}}/support">Support</a>
+    </nav>
+    <div class="header-actions">
+      <a href="#download" class="btn btn-ink btn-sm" data-fr="Bientôt sur iPhone">Coming to iPhone</a>
+      <a id="lang-toggle" class="lang-toggle" href="{{other_url}}" hreflang="{{other_lang}}" lang="{{other_lang}}">{{other_label}}</a>
+    </div>
+  </div>
+</header>
+
+<main id="top">
+
+  <!-- ============ HERO ============ -->
+  <section class="hero">
+    <div class="container hero-grid">
+      <div class="hero-copy">
+        <span class="eyebrow" data-fr="Manifestation quotidienne">Daily manifestation</span>
+        <h1 data-fr="Construis la vie &lt;em&gt;que tu veux.&lt;/em&gt;">Build the life <em>you want.</em></h1>
+        <p class="hero-sub">
+          <span data-fr="Deux courtes séances audio par jour, écrites pour ta">Two short audio sessions a day, written for your</span>
+          <span class="rotator" id="rotator"
+                data-words-en="confidence.|discipline.|career.|money goals."
+                data-words-fr="confiance.|discipline.|carrière.|relation à l'argent.">confidence.</span>
+          <br>
+          <span data-fr="Le matin pour te lancer. Le soir pour relire ta journée, sans culpabilité.">A morning to get you going. An evening to look back on your day, no guilt.</span>
+        </p>
+
+        <div class="hero-cta" id="download">
+          <a class="store-badge js-store" aria-disabled="true" role="link">
+            <svg viewBox="0 0 24 24" fill="currentColor" aria-hidden="true"><path d="M16.37 12.6c-.02-2.2 1.8-3.26 1.88-3.31-1.03-1.5-2.62-1.7-3.19-1.73-1.36-.14-2.65.8-3.34.8-.69 0-1.75-.78-2.88-.76-1.48.02-2.85.86-3.61 2.19-1.54 2.67-.39 6.63 1.11 8.8.73 1.06 1.6 2.25 2.75 2.2 1.1-.04 1.52-.71 2.85-.71 1.33 0 1.71.71 2.88.69 1.19-.02 1.94-1.08 2.67-2.14.84-1.23 1.19-2.42 1.21-2.48-.03-.01-2.32-.89-2.33-3.55zM14.2 6.13c.61-.74 1.02-1.76.91-2.78-.88.04-1.94.59-2.57 1.32-.56.65-1.06 1.69-.93 2.69.98.08 1.98-.5 2.59-1.23z"/></svg>
+            <span>
+              <span class="sb-small js-store-small" data-fr="Bientôt sur">Coming soon on the</span>
+              <span class="sb-big">App Store</span>
+            </span>
+          </a>
+          <p class="cta-note js-store-note"><span class="dot-pulse"></span><span data-fr="En cours de validation par Apple">Currently in review by Apple</span></p>
+        </div>
+
+      </div>
+
+      <div class="hero-visual" aria-hidden="true">
+        <div class="goal-chip c1"><small data-fr="Exemple d'objectif">Example goal</small><span data-fr="« Prendre la parole en réunion sans trembler »">“Speak up in meetings without shaking”</span></div>
+        <div class="goal-chip c2"><small data-fr="Exemple d'objectif">Example goal</small><span data-fr="« Lancer ma boutique en ligne avant l'été »">“Launch my online shop before summer”</span></div>
+        <div class="goal-chip c3"><small data-fr="Exemple d'objectif">Example goal</small><span data-fr="« Me lever à 6 h, pour moi »">“Get up at 6 a.m., for me”</span></div>
+
+        <div class="phone">
+          <div class="phone-screen">
+            <div class="phone-island"></div>
+            <div class="ps-status"><span>7:42</span><span class="icons"><i></i><i></i></span></div>
+            <div class="ps-top"><span class="ps-logo">Yana</span><span class="ps-avatar"></span></div>
+            <div>
+              <div class="ps-hello" data-fr="Bonjour">Good morning</div>
+              <div class="ps-day"><b data-fr="Jour 4">Day 4</b><span>/ 30</span></div>
+            </div>
+            <div>
+              <div class="ps-track"><span class="on"></span><span></span><span></span><span></span></div>
+              <div class="ps-phase" style="margin-top:6px"><b data-fr="1 · Croire">1 · Believe</b><span data-fr="Confiance en soi">Self-confidence</span></div>
+            </div>
+            <div class="ps-card ps-session morning">
+              <span class="sun"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round"><circle cx="12" cy="14" r="4"/><path d="M12 4v3M4.9 7.9l2 2M19.1 7.9l-2 2M3 18h18"/></svg></span>
+              <span class="txt"><b data-fr="Matin">Morning</b><small data-fr="Pourquoi je me lève ?">Why do I get up?</small></span>
+              <span class="ps-go" data-fr="Commencer">Start</span>
+            </div>
+            <div class="ps-card ps-session evening">
+              <span class="sun"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round"><path d="M20 14.5A8 8 0 1 1 9.5 4a6.5 6.5 0 0 0 10.5 10.5z"/></svg></span>
+              <span class="txt"><b data-fr="Soir">Evening</b><small data-fr="Pourquoi je continue ?">Why do I keep going?</small></span>
+              <span class="ps-lock" data-fr="Ce soir">Tonight</span>
+            </div>
+            <div class="ps-card ps-mission">
+              <div class="lbl" data-fr="Ta mission du jour">Today's mission</div>
+              <p data-fr="Pose une question pendant la réunion de 10 h, même courte.">Ask one question in the 10 a.m. meeting, even a short one.</p>
+            </div>
+            <div class="ps-card ps-finish">
+              <div class="lbl" data-fr="Ta ligne d'arrivée">Your finish line</div>
+              <p data-fr="Présenter mon projet devant l'équipe, d'une voix posée.">Present my project to the team, in a steady voice.</p>
+            </div>
+            <div class="ps-tabs"><span class="on"><i></i><span data-fr="Aujourd'hui">Today</span></span><span><i></i><span data-fr="Parcours">Journey</span></span><span><i></i><span data-fr="Profil">Profile</span></span></div>
+          </div>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- ============ DOMAINES ============ -->
+  <div class="domains">
+    <div class="container domains-inner">
+      <span class="domain-pill"><span>✦</span><span data-fr="Confiance en soi">Self-confidence</span></span>
+      <span class="domain-pill"><span>◐</span><span data-fr="Discipline">Discipline</span></span>
+      <span class="domain-pill"><span>↗</span><span data-fr="Carrière &amp; projets">Career &amp; projects</span></span>
+      <span class="domain-pill"><span>◇</span><span data-fr="Argent">Money</span></span>
+    </div>
+  </div>
+
+  <!-- ============ COMMENT ÇA MARCHE ============ -->
+  <section id="how">
+    <div class="container">
+      <div class="section-head reveal">
+        <span class="eyebrow" data-fr="Comment ça marche">How it works</span>
+        <h2 data-fr="Un objectif. &lt;em&gt;Tes mots.&lt;/em&gt; Un chemin.">One goal. <em>Your words.</em> A path.</h2>
+        <p data-fr="Pas de bibliothèque d'affirmations toutes faites. Yana part de ce que tu veux vraiment, et l'écrit pour toi, chaque jour.">No library of ready-made affirmations. Yana starts from what you actually want, and writes it for you, every day.</p>
+      </div>
+      <div class="steps">
+        <article class="card step reveal">
+          <div class="step-num">01</div>
+          <h3 data-fr="Dis ce que tu veux">Say what you want</h3>
+          <p data-fr="Écris ou dicte ton objectif, avec tes propres mots. Quelques questions douces aident Yana à comprendre d'où tu pars et ce qui te bloque.">Write or dictate your goal in your own words. A few gentle questions help Yana understand where you're starting from and what's holding you back.</p>
+          <div class="quote" data-fr="« Je veux oser dire non au travail. »">“I want to dare to say no at work.”</div>
+        </article>
+        <article class="card step reveal">
+          <div class="step-num">02</div>
+          <h3 data-fr="Yana trace ton parcours">Yana maps your journey</h3>
+          <p data-fr="Elle te propose une durée — de 14 à 90 jours — et t'explique pourquoi. Tu confirmes, et ton plan en quatre phases est construit, avec une ligne d'arrivée claire.">It suggests a length — 14 to 90 days — and tells you why. You confirm, and your four-phase plan is built, with a clear finish line.</p>
+        </article>
+        <article class="card step reveal">
+          <div class="step-num">03</div>
+          <h3 data-fr="Écoute, matin et soir">Listen, morning and evening</h3>
+          <p data-fr="Chaque séance est écrite pour ce jour-là : ton jour du parcours, ton humeur, ce que tu as fait hier et ce que tu en as dit. Elle s'ajuste après chaque écoute.">Each session is written for that day: your day in the journey, your mood, what you did yesterday and how it went. It adjusts after every listen.</p>
+        </article>
+      </div>
+    </div>
+  </section>
+
+  <!-- ============ LE RITUEL ============ -->
+  <section id="ritual" class="ritual">
+    <div class="container">
+      <div class="section-head reveal">
+        <span class="eyebrow" data-fr="Le rituel quotidien">The daily ritual</span>
+        <h2 data-fr="Deux moments qui &lt;em&gt;ne disent pas&lt;/em&gt; la même chose.">Two moments that <em>don't say</em> the same thing.</h2>
+        <p data-fr="Le matin engage. Le soir relit, et referme la boucle sur l'action du matin.">The morning commits. The evening looks back, and closes the loop on the morning's action.</p>
+      </div>
+      <div class="ritual-grid">
+        <article class="card slot morning reveal">
+          <div class="slot-top">
+            <span class="slot-icon"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round"><circle cx="12" cy="14" r="4"/><path d="M12 4v3M4.9 7.9l2 2M19.1 7.9l-2 2M3 18h18"/></svg></span>
+            <span class="slot-when" data-fr="Le matin">Morning</span>
+          </div>
+          <h3 data-fr="« Pourquoi je me lève ? »">“Why do I get up?”</h3>
+          <p data-fr="Ta raison d'avancer aujourd'hui, et une seule petite mission.">Your reason to move today, and one small mission.</p>
+          <ol class="flow">
+            <li><b>1</b><span data-fr="Check-in : comment tu te sens">Check-in: how you feel</span></li>
+            <li><b>2</b><span data-fr="Ancrage : respirer, revenir ici">Grounding: breathe, come back here</span></li>
+            <li><b>3</b><span data-fr="Ta scène future, vécue au présent">Your future scene, lived in the present</span></li>
+            <li><b>4</b><span data-fr="Affirmations écrites pour toi">Affirmations written for you</span></li>
+            <li class="hl"><b>5</b><span data-fr="Ta mission du jour">Today's mission</span><span class="tag" data-fr="Action">Action</span></li>
+          </ol>
+        </article>
+        <article class="card slot evening reveal">
+          <div class="slot-top">
+            <span class="slot-icon"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round"><path d="M20 14.5A8 8 0 1 1 9.5 4a6.5 6.5 0 0 0 10.5 10.5z"/></svg></span>
+            <span class="slot-when" data-fr="Le soir">Evening</span>
+          </div>
+          <h3 data-fr="« Pourquoi je continue ? »">“Why do I keep going?”</h3>
+          <p data-fr="Ce que tu as fait de ta mission. Si tu ne l'as pas faite, aucun reproche.">What you did with your mission. If you didn't do it, no blame.</p>
+          <ol class="flow">
+            <li><b>1</b><span data-fr="Check-in : mission faite ? une preuve ?">Check-in: mission done? any proof?</span></li>
+            <li><b>2</b><span data-fr="Bilan de ta journée">A look back at your day</span></li>
+            <li><b>3</b><span data-fr="Gratitude">Gratitude</span></li>
+            <li><b>4</b><span data-fr="Lâcher-prise, pour bien dormir">Letting go, to sleep well</span></li>
+          </ol>
+        </article>
+      </div>
+      <p class="ritual-note reveal" data-fr="Assez simple pour devenir une habitude. &lt;em&gt;Assez personnel pour compter.&lt;/em&gt;">Simple enough to become a habit. <em>Personal enough to matter.</em></p>
+    </div>
+  </section>
+
+  <!-- ============ LE PARCOURS ============ -->
+  <section id="journey">
+    <div class="container journey-wrap">
+      <div class="section-head reveal">
+        <span class="eyebrow" data-fr="Le parcours">The journey</span>
+        <h2 data-fr="Un chemin en &lt;em&gt;quatre phases&lt;/em&gt;, à ton rythme.">A path in <em>four phases</em>, at your pace.</h2>
+        <p data-fr="Chaque phase couvre un quart de ton parcours, quelle que soit sa durée. Les séances changent de ton avec toi : d'abord y croire, puis le vivre, puis le faire.">Each phase covers a quarter of your journey, whatever its length. Sessions change tone as you go: first believe it, then live it, then do it.</p>
+        <div class="lengths">
+          <span data-fr="14 jours">14 days</span><span data-fr="21 jours">21 days</span><span class="rec" data-fr="30 jours">30 days</span><span data-fr="60 jours">60 days</span><span data-fr="90 jours">90 days</span>
+        </div>
+        <p class="lengths-note" data-fr="Yana recommande une durée selon ton objectif. Tu peux prolonger ensuite.">Yana recommends a length based on your goal. You can extend it later.</p>
+      </div>
+      <div>
+        <div class="phases">
+          <div class="card phase reveal"><span class="phase-badge">1</span><div><h3><span data-fr="Croire">Believe</span><small>0–25 %</small></h3><p data-fr="Rendre ton objectif croyable.">Make your goal believable.</p></div></div>
+          <div class="card phase reveal"><span class="phase-badge">2</span><div><h3><span data-fr="Devenir">Become</span><small>25–50 %</small></h3><p data-fr="L'incarner, en parler au présent.">Embody it, speak of it in the present.</p></div></div>
+          <div class="card phase reveal"><span class="phase-badge">3</span><div><h3><span data-fr="Agir">Act</span><small>50–75 %</small></h3><p data-fr="Passer à l'action, un pas plus grand chaque jour.">Take action, a slightly bigger step each day.</p></div></div>
+          <div class="card phase reveal"><span class="phase-badge">4</span><div><h3><span data-fr="Ancrer">Anchor</span><small>75–100 %</small></h3><p data-fr="L'ancrer, et préparer l'après.">Make it stick, and prepare what comes next.</p></div></div>
+        </div>
+        <div class="pause-note reveal">
+          <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round"><rect x="6" y="5" width="4" height="14" rx="1"/><rect x="14" y="5" width="4" height="14" rx="1"/></svg>
+          <span data-fr="&lt;strong&gt;Un jour manqué met en pause, il ne fait pas sauter de jour.&lt;/strong&gt; Tu reprends exactement là où tu en étais. Rien n'est perdu.">
+            <strong>A missed day pauses your journey, it doesn't skip ahead.</strong> You pick up exactly where you left off. Nothing is lost.</span>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- ============ FONCTIONNALITÉS ============ -->
+  <section id="features" class="ritual">
+    <div class="container">
+      <div class="section-head reveal">
+        <span class="eyebrow" data-fr="Pensée pour toi">Made for you</span>
+        <h2 data-fr="Tout ce qu'il faut, &lt;em&gt;rien de plus.&lt;/em&gt;">Everything you need, <em>nothing more.</em></h2>
+      </div>
+      <div class="features-grid">
+        <article class="card feature reveal">
+          <div class="feature-icon"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round"><path d="M12 20h9"/><path d="M16.5 3.5a2.1 2.1 0 0 1 3 3L7 19l-4 1 1-4z"/></svg></div>
+          <h3 data-fr="Écrite chaque jour, pour toi">Written daily, for you</h3>
+          <p data-fr="Aucune séance n'est réutilisée. Chacune part de ton objectif, de ton jour et de ce que tu as vécu la veille.">No session is ever reused. Each one starts from your goal, your day and what you lived the day before.</p>
+        </article>
+        <article class="card feature reveal">
+          <div class="feature-icon"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round"><path d="M21 12a9 9 0 1 1-3-6.7L21 8"/><path d="M21 3v5h-5"/></svg></div>
+          <h3 data-fr="Elle apprend de toi">It learns from you</h3>
+          <p data-fr="Dis à Yana ce qui a marché ou non. Le ton, le rythme et les missions s'ajustent à tes retours.">Tell Yana what worked and what didn't. Tone, pace and missions adjust to your feedback.</p>
+        </article>
+        <article class="card feature reveal">
+          <div class="feature-icon"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round"><path d="M9 18V5l12-2v13"/><circle cx="6" cy="18" r="3"/><circle cx="18" cy="16" r="3"/></svg></div>
+          <h3 data-fr="Ta voix, ta musique">Your voice, your music</h3>
+          <p data-fr="Choisis la voix qui te parle, son débit, et une musique de fond douce — ou le silence.">Choose the voice that speaks to you, its pace, and soft background music — or silence.</p>
+        </article>
+        <article class="card feature reveal">
+          <div class="feature-icon"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round"><path d="M18 8a6 6 0 0 0-12 0c0 7-3 9-3 9h18s-3-2-3-9"/><path d="M13.7 21a2 2 0 0 1-3.4 0"/></svg></div>
+          <h3 data-fr="Deux rappels, pas plus">Two reminders, no more</h3>
+          <p data-fr="Un le matin, un le soir, aux heures que tu choisis. Leur texte est écrit par ta séance précédente.">One in the morning, one in the evening, at times you pick. Their text is written by your previous session.</p>
+        </article>
+        <article class="card feature reveal">
+          <div class="feature-icon"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round"><circle cx="12" cy="12" r="9"/><circle cx="12" cy="12" r="5"/><circle cx="12" cy="12" r="1"/></svg></div>
+          <h3 data-fr="Jusqu'à 3 objectifs">Up to 3 goals</h3>
+          <p data-fr="Mène plusieurs parcours en parallèle. Un seul par jour prend ton matin et ton soir, pour garder le cap.">Run several journeys side by side. Only one takes your morning and evening each day, so you stay focused.</p>
+        </article>
+        <article class="card feature reveal">
+          <div class="feature-icon"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round"><rect x="4" y="11" width="16" height="10" rx="2"/><path d="M8 11V7a4 4 0 0 1 8 0v4"/></svg></div>
+          <h3 data-fr="Privée par design">Private by design</h3>
+          <p data-fr="Rien de ce que tu écris n'est rendu public. Supprime ton compte et toutes tes données depuis l'app, à tout moment.">Nothing you write is ever made public. Delete your account and all your data from the app, anytime.</p>
+        </article>
+      </div>
+    </div>
+  </section>
+
+  <!-- ============ CE QUE YANA N'EST PAS ============ -->
+  <section class="principles">
+    <div class="container">
+      <div class="section-head reveal">
+        <span class="eyebrow" data-fr="Nos principes">Our principles</span>
+        <h2 data-fr="Ce que Yana &lt;em&gt;n'est pas.&lt;/em&gt;">What Yana <em>is not.</em></h2>
+        <p data-fr="Une app qui sait ce qu'elle fait, et ce qu'elle ne fait pas.">An app that knows what it does — and what it doesn't.</p>
+      </div>
+      <div class="not-grid">
+        <div class="not-item reveal"><div class="x" data-fr="Une liste d'affirmations">A list of affirmations</div><p data-fr="Chaque mot est écrit pour ton objectif, pas copié d'un catalogue.">Every word is written for your goal, not copied from a catalog.</p></div>
+        <div class="not-item reveal"><div class="x" data-fr="Un réseau social">A social network</div><p data-fr="Pas de fil, pas de likes, pas de comparaison. Juste toi et ton chemin.">No feed, no likes, no comparison. Just you and your path.</p></div>
+        <div class="not-item reveal"><div class="x" data-fr="Une app qui culpabilise">A guilt machine</div><p data-fr="Pas de série perdue, pas de reproche. Le soir ne juge jamais.">No lost streaks, no blame. The evening never judges.</p></div>
+        <div class="not-item reveal"><div class="x" data-fr="Une thérapie">Therapy</div><p data-fr="Yana n'est pas un service d'aide. Si ça ne va pas, elle te montre vers qui te tourner.">Yana is not a help service. If things aren't okay, it shows you who to turn to.</p></div>
+      </div>
+    </div>
+  </section>
+
+
+  <!-- ============ FAQ ============ -->
+  <section id="faq" class="ritual">
+    <div class="container">
+      <div class="section-head reveal">
+        <span class="eyebrow">FAQ</span>
+        <h2 data-fr="Tes questions, &lt;em&gt;nos réponses.&lt;/em&gt;">Your questions, <em>answered.</em></h2>
+      </div>
+      <div class="faq-list">
+        <details class="faq-item reveal">
+          <summary data-fr="Qu'est-ce que la manifestation, avec Yana ?">What does “manifestation” mean with Yana?</summary>
+          <div class="answer"><p data-fr="Se représenter clairement la vie qu'on veut, y croire, puis agir chaque jour dans sa direction. Yana combine visualisation, affirmations écrites pour toi et une petite mission concrète chaque matin. La visualisation seule ne suffit pas : c'est l'action quotidienne qui compte.">Picturing the life you want clearly, believing in it, then acting toward it every day. Yana combines visualization, affirmations written for you, and one small concrete mission each morning. Visualization alone isn't enough — the daily action is what counts.</p></div>
+        </details>
+        <details class="faq-item reveal">
+          <summary data-fr="Et si je rate un jour ?">What if I miss a day?</summary>
+          <div class="answer"><p data-fr="Ton parcours se met simplement en pause. Il ne saute pas de jour : tu reprends là où tu en étais, sans reproche.">Your journey simply pauses. It doesn't skip a day: you pick up where you left off, with no blame.</p></div>
+        </details>
+        <details class="faq-item reveal">
+          <summary data-fr="Yana utilise-t-elle l'intelligence artificielle ?">Does Yana use artificial intelligence?</summary>
+          <div class="answer"><p data-fr="Oui. Tes séances sont écrites et lues par des modèles d'IA, à partir de ton objectif et de tes retours. L'app te demande ton accord avant d'envoyer quoi que ce soit, et t'explique ce qui est partagé et avec qui.">Yes. Your sessions are written and voiced by AI models, based on your goal and feedback. The app asks for your consent before sending anything, and explains what is shared and with whom.</p></div>
+        </details>
+        <details class="faq-item reveal">
+          <summary data-fr="Mes données sont-elles privées ?">Is my data private?</summary>
+          <div class="answer"><p data-fr="Rien de ce que tu écris n'est jamais rendu public ni vendu. Tu peux supprimer ton compte et toutes tes données depuis &lt;span class=&quot;kbd&quot;&gt;Profil → Supprimer mon compte&lt;/span&gt;. Détails dans la &lt;a href=&quot;https://stephanenkengue.github.io/Yana-legal/privacy.html&quot;&gt;politique de confidentialité&lt;/a&gt;.">Nothing you write is ever made public or sold. You can delete your account and all your data from <span class="kbd">Profile → Delete my account</span>. Details in the <a href="https://stephanenkengue.github.io/Yana-legal/privacy-en.html">privacy policy</a>.</p></div>
+        </details>
+        <details class="faq-item reveal">
+          <summary data-fr="Est-ce une thérapie ?">Is this therapy?</summary>
+          <div class="answer"><p data-fr="Non. Yana est un outil de développement personnel, pas un service médical ni psychologique. Si tu traverses un moment difficile, parle à un professionnel de santé.">No. Yana is a personal growth tool, not a medical or psychological service. If you are going through a hard time, please talk to a health professional.</p></div>
+        </details>
+        <details class="faq-item reveal">
+          <summary data-fr="Yana est-elle disponible sur Android ?">Is Yana available on Android?</summary>
+          <div class="answer"><p data-fr="Pas encore. Yana arrive d'abord sur iPhone (iOS 17 ou plus récent).">Not yet. Yana is coming to iPhone first (iOS 17 or later).</p></div>
+        </details>
+      </div>
+      <p class="faq-more" data-fr="Une autre question ? &lt;a href=&quot;{{base}}/support&quot;&gt;Visite le support →&lt;/a&gt;">Another question? <a href="{{base}}/support">Visit support →</a></p>
+    </div>
+  </section>
+
+  <!-- ============ CTA FINAL ============ -->
+  <section class="final-cta">
+    <div class="container">
+      <div class="final-card reveal">
+        <div>
+          <h2 data-fr="Demain matin, &lt;em&gt;commence autrement.&lt;/em&gt;">Tomorrow morning, <em>start differently.</em></h2>
+          <p data-fr="Yana arrive bientôt sur l'App Store. Une séance le matin, une séance le soir : le reste, c'est toi qui le construis.">Yana is coming soon to the App Store. One session in the morning, one at night: the rest is yours to build.</p>
+          <a class="store-badge js-store" aria-disabled="true" role="link">
+            <svg viewBox="0 0 24 24" fill="currentColor" aria-hidden="true"><path d="M16.37 12.6c-.02-2.2 1.8-3.26 1.88-3.31-1.03-1.5-2.62-1.7-3.19-1.73-1.36-.14-2.65.8-3.34.8-.69 0-1.75-.78-2.88-.76-1.48.02-2.85.86-3.61 2.19-1.54 2.67-.39 6.63 1.11 8.8.73 1.06 1.6 2.25 2.75 2.2 1.1-.04 1.52-.71 2.85-.71 1.33 0 1.71.71 2.88.69 1.19-.02 1.94-1.08 2.67-2.14.84-1.23 1.19-2.42 1.21-2.48-.03-.01-2.32-.89-2.33-3.55zM14.2 6.13c.61-.74 1.02-1.76.91-2.78-.88.04-1.94.59-2.57 1.32-.56.65-1.06 1.69-.93 2.69.98.08 1.98-.5 2.59-1.23z"/></svg>
+            <span>
+              <span class="sb-small js-store-small" data-fr="Bientôt sur">Coming soon on the</span>
+              <span class="sb-big">App Store</span>
+            </span>
+          </a>
+        </div>
+        <picture><source srcset="/assets/figure.avif" type="image/avif"><img src="/assets/figure.png" alt="" loading="lazy" width="648" height="720"></picture>
+      </div>
+    </div>
+  </section>
+
+</main>
+
+<div class="mobile-cta" id="mobile-cta" aria-hidden="true">
+  <img src="/assets/icon.png" alt="">
+  <span class="txt"><b>Yana</b><small class="js-store-note-short" data-fr="Bientôt sur l'App Store">Coming soon on the App Store</small></span>
+  <a class="btn btn-ink btn-sm js-store-btn" href="#download" data-fr="En savoir plus">Learn more</a>
+</div>
+
+<footer class="site-footer">
+  <div class="container">
+    <div class="footer-grid">
+      <div class="footer-brand">
+        <a href="#top" class="logo">Yana</a>
+        <p data-fr="Manifeste et visualise. Deux courtes séances par jour, écrites pour ton objectif.">Manifest &amp; visualize. Two short sessions a day, written for your goal.</p>
+      </div>
+      <div class="footer-col">
+        <h4 data-fr="L'app">The app</h4>
+        <a href="#how" data-fr="Comment ça marche">How it works</a>
+        <a href="#ritual" data-fr="Le rituel">The ritual</a>
+        <a href="#faq">FAQ</a>
+      </div>
+      <div class="footer-col">
+        <h4 data-fr="Aide">Help</h4>
+        <a href="{{base}}/support">Support</a>
+        <a href="mailto:digest.mtl@gmail.com">digest.mtl@gmail.com</a>
+        <a href="https://stephanenkengue.github.io/Yana-legal/terms-en.html" data-fr-href="https://stephanenkengue.github.io/Yana-legal/terms.html" data-fr="Conditions d'utilisation">Terms of Use</a>
+        <a href="https://stephanenkengue.github.io/Yana-legal/privacy-en.html" data-fr-href="https://stephanenkengue.github.io/Yana-legal/privacy.html" data-fr="Politique de confidentialité">Privacy Policy</a>
+      </div>
+    </div>
+    <div class="footer-bottom">
+      <span>&copy; 2026 Yana. <span data-fr="Tous droits réservés.">All rights reserved.</span></span>
+      <span data-fr="Construis la vie que tu veux.">Build the life you want.</span>
+    </div>
+  </div>
+</footer>
+
+{{jsonld}}
+<script src="/script.js"></script>
+</body>
+</html>

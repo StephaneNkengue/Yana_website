@@ -114,6 +114,7 @@ h1, h2, h3 { font-family: var(--serif); font-weight: 400; letter-spacing: -0.015
 .header-actions { display: flex; align-items: center; gap: 10px; }
 
 .lang-toggle {
+  display: inline-block;
   background: var(--surface);
   border: 1px solid var(--border);
   color: var(--text);
@@ -612,7 +613,8 @@ section { padding: 100px 0; }
 .final-card h2 { font-size: clamp(2rem, 4vw, 3rem); margin-bottom: 14px; }
 .final-card h2 em { color: var(--accent); }
 .final-card p { color: var(--text-2); margin-bottom: 28px; max-width: 460px; }
-.final-card img { width: 100%; max-width: 240px; justify-self: center; animation: float-y 8s ease-in-out infinite; }
+.final-card picture { display: block; width: 100%; max-width: 240px; justify-self: center; }
+.final-card img { width: 100%; animation: float-y 8s ease-in-out infinite; }
 @keyframes float-y { 0%, 100% { transform: translateY(0); } 50% { transform: translateY(-10px); } }
 
 /* ---------- Footer ---------- */
@@ -740,7 +742,7 @@ section { padding: 100px 0; }
   .slot { padding: 28px 22px; }
   .final-card { grid-template-columns: 1fr; padding: 36px 24px; text-align: center; }
   .final-card p { margin-left: auto; margin-right: auto; }
-  .final-card img { max-width: 160px; grid-row: 1; }
+  .final-card picture { max-width: 160px; grid-row: 1; }
   .footer-grid { grid-template-columns: 1fr 1fr; }
   .footer-brand { grid-column: 1 / -1; }
   .mobile-cta { display: flex; }

@@ -1,0 +1,261 @@
+<!DOCTYPE html>
+<!-- Source : `python3 scripts/build.py` génère index.html, support.html et fr/ à partir de ce fichier. -->
+<html lang="{{lang}}">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title data-fr="Aide et support — Yana">Help &amp; Support — Yana</title>
+<meta name="description" content="Yana support: subscription, account, sessions, audio and reminders. Contact us at digest.mtl@gmail.com." data-fr-content="Support Yana : abonnement, compte, séances, audio et rappels. Écris-nous à digest.mtl@gmail.com.">
+{{seo}}
+<link rel="icon" type="image/png" href="/assets/favicon.png">
+<link rel="apple-touch-icon" href="/assets/apple-touch-icon.png">
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Newsreader:ital,opsz,wght@0,6..72,400;1,6..72,400&display=swap" rel="stylesheet">
+<link rel="stylesheet" href="/styles.css">
+</head>
+<body>
+
+<header class="site-header">
+  <div class="container header-inner">
+    <a href="{{home}}" class="logo" aria-label="Yana">Yana</a>
+    <nav class="nav" aria-label="Main">
+      <a href="{{home}}#how" data-fr="Comment ça marche">How it works</a>
+      <a href="{{home}}#ritual" data-fr="Le rituel">The ritual</a>
+      <a href="{{base}}/support" aria-current="page">Support</a>
+    </nav>
+    <div class="header-actions">
+      <a href="mailto:digest.mtl@gmail.com" class="btn btn-ink btn-sm" data-fr="Nous écrire">Contact us</a>
+      <a id="lang-toggle" class="lang-toggle" href="{{other_url}}" hreflang="{{other_lang}}" lang="{{other_lang}}">{{other_label}}</a>
+    </div>
+  </div>
+</header>
+
+<main>
+
+  <section class="page-hero">
+    <div class="container">
+      <span class="eyebrow">Support</span>
+      <h1 data-fr="Comment peut-on &lt;em&gt;t'aider ?&lt;/em&gt;">How can we <em>help?</em></h1>
+      <p data-fr="Les réponses aux questions les plus fréquentes sont ci-dessous. Pour tout le reste, écris-nous : on lit chaque message.">Answers to the most common questions are below. For anything else, write to us — we read every message.</p>
+    </div>
+  </section>
+
+  <div class="container">
+    <div class="card contact-card">
+      <span class="ic"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round"><rect x="3" y="5" width="18" height="14" rx="2"/><path d="M3 7l9 6 9-6"/></svg></span>
+      <div class="txt">
+        <h2 data-fr="Écris-nous">Write to us</h2>
+        <p><a class="mail" href="mailto:digest.mtl@gmail.com">digest.mtl@gmail.com</a></p>
+        <p data-fr="Dis-nous le modèle de ton iPhone, ta version d'iOS et ce qui s'est passé : on pourra t'aider plus vite.">Include your iPhone model, iOS version and what happened — it helps us help you faster.</p>
+      </div>
+      <a href="mailto:digest.mtl@gmail.com?subject=Yana%20support" class="btn btn-accent" data-fr="Envoyer un e-mail">Send an email</a>
+    </div>
+
+    <div class="topics">
+      <a href="#subscription" class="card topic">
+        <div class="feature-icon"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round"><rect x="2" y="5" width="20" height="14" rx="2"/><path d="M2 10h20"/></svg></div>
+        <h3 data-fr="Abonnement">Subscription</h3>
+        <p data-fr="Essai, résiliation, restauration">Trial, cancel, restore</p>
+      </a>
+      <a href="#account" class="card topic">
+        <div class="feature-icon"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round"><circle cx="12" cy="8" r="4"/><path d="M4 21c0-4 4-6 8-6s8 2 8 6"/></svg></div>
+        <h3 data-fr="Compte &amp; données">Account &amp; data</h3>
+        <p data-fr="Sauvegarde, suppression">Backup, deletion</p>
+      </a>
+      <a href="#sessions" class="card topic">
+        <div class="feature-icon"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round"><circle cx="12" cy="12" r="9"/><path d="M12 7v5l3 2"/></svg></div>
+        <h3 data-fr="Séances &amp; parcours">Sessions &amp; journey</h3>
+        <p data-fr="Horaires, jours manqués, objectifs">Times, missed days, goals</p>
+      </a>
+      <a href="#audio" class="card topic">
+        <div class="feature-icon"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round"><path d="M11 5L6 9H2v6h4l5 4V5z"/><path d="M15.5 8.5a5 5 0 0 1 0 7M19 5a10 10 0 0 1 0 14"/></svg></div>
+        <h3 data-fr="Audio &amp; rappels">Audio &amp; reminders</h3>
+        <p data-fr="Voix, musique, notifications">Voice, music, notifications</p>
+      </a>
+    </div>
+  </div>
+
+  <!-- Abonnement -->
+  <section id="subscription" class="support-section">
+    <div class="container">
+      <h2 data-fr="Abonnement">Subscription</h2>
+      <div class="faq-list">
+        <details class="faq-item">
+          <summary data-fr="Comment fonctionne l'essai gratuit ?">How does the free trial work?</summary>
+          <div class="answer">
+            <p data-fr="Ta première séance est offerte pendant l'inscription. Ensuite, les formules mensuelle et annuelle commencent par 7 jours d'essai gratuit, gérés par l'App Store. Sans résiliation au moins 24 h avant la fin de l'essai, l'abonnement démarre automatiquement.">Your first session is free during sign-up. After that, the monthly and yearly plans both start with a 7-day free trial, handled by the App Store. Unless you cancel at least 24 hours before the trial ends, the subscription starts automatically.</p>
+            <p data-fr="L'essai est valable une seule fois par identifiant Apple, toutes formules confondues.">The trial is available once per Apple ID, across both plans.</p>
+          </div>
+        </details>
+        <details class="faq-item">
+          <summary data-fr="Comment résilier mon abonnement ?">How do I cancel my subscription?</summary>
+          <div class="answer">
+            <p data-fr="Les abonnements passent par Apple. Depuis Yana : &lt;span class=&quot;kbd&quot;&gt;Profil → Mon abonnement → Gérer mon abonnement&lt;/span&gt;. Ou depuis ton iPhone :">Subscriptions are handled by Apple. From Yana: <span class="kbd">Profile → My subscription → Manage my subscription</span>. Or from your iPhone:</p>
+            <ol class="steps-inline">
+              <li data-fr="Ouvre &lt;span class=&quot;kbd&quot;&gt;Réglages&lt;/span&gt; et touche ton nom.">Open <span class="kbd">Settings</span> and tap your name.</li>
+              <li data-fr="Touche &lt;span class=&quot;kbd&quot;&gt;Abonnements&lt;/span&gt;, puis &lt;span class=&quot;kbd&quot;&gt;Yana&lt;/span&gt;.">Tap <span class="kbd">Subscriptions</span>, then <span class="kbd">Yana</span>.</li>
+              <li data-fr="Touche &lt;span class=&quot;kbd&quot;&gt;Annuler l'abonnement&lt;/span&gt;.">Tap <span class="kbd">Cancel Subscription</span>.</li>
+            </ol>
+            <p data-fr="Tu gardes l'accès jusqu'à la fin de la période déjà payée.">You keep access until the end of the period you've already paid for.</p>
+          </div>
+        </details>
+        <details class="faq-item">
+          <summary data-fr="J'ai changé d'iPhone : comment retrouver mon abonnement ?">I changed iPhones — how do I get my subscription back?</summary>
+          <div class="answer"><p data-fr="Connecte-toi avec le même identifiant Apple, puis va dans &lt;span class=&quot;kbd&quot;&gt;Profil → Mon abonnement → Restaurer mes achats&lt;/span&gt;.">Sign in with the same Apple ID, then go to <span class="kbd">Profile → My subscription → Restore purchases</span>.</p></div>
+        </details>
+        <details class="faq-item">
+          <summary data-fr="Comment demander un remboursement ?">How do I request a refund?</summary>
+          <div class="answer"><p data-fr="Les paiements sont encaissés par Apple, qui traite aussi les remboursements. Fais ta demande sur &lt;a href=&quot;https://reportaproblem.apple.com&quot;&gt;reportaproblem.apple.com&lt;/a&gt;.">Payments are collected by Apple, which also handles refunds. Request one at <a href="https://reportaproblem.apple.com">reportaproblem.apple.com</a>.</p></div>
+        </details>
+        <details class="faq-item">
+          <summary data-fr="Supprimer mon compte arrête-t-il mon abonnement ?">Does deleting my account stop my subscription?</summary>
+          <div class="answer"><p data-fr="Non. Supprimer ton compte ne résilie pas l'abonnement Apple : résilie-le d'abord avec « Gérer mon abonnement ».">No. Deleting your account doesn't cancel your Apple subscription — cancel it first with “Manage my subscription”.</p></div>
+        </details>
+      </div>
+    </div>
+  </section>
+
+  <!-- Compte -->
+  <section id="account" class="support-section">
+    <div class="container">
+      <h2 data-fr="Compte &amp; données">Account &amp; data</h2>
+      <div class="faq-list">
+        <details class="faq-item">
+          <summary data-fr="Comment sauvegarder mon parcours ?">How do I back up my journey?</summary>
+          <div class="answer"><p data-fr="Tant que tu n'as pas relié ton compte, ton parcours ne vit que sur cet iPhone. Va dans &lt;span class=&quot;kbd&quot;&gt;Profil → Sauvegarder mon parcours&lt;/span&gt; et connecte-toi avec Apple pour le retrouver sur un autre appareil.">Until you link your account, your journey only lives on this iPhone. Go to <span class="kbd">Profile → Save my journey</span> and sign in with Apple to find it on another device.</p></div>
+        </details>
+        <details class="faq-item">
+          <summary data-fr="Comment supprimer mon compte et mes données ?">How do I delete my account and data?</summary>
+          <div class="answer">
+            <p data-fr="Dans l'app : &lt;span class=&quot;kbd&quot;&gt;Profil → Supprimer mon compte&lt;/span&gt;. Sont supprimés ton compte et ton prénom, tes objectifs, l'historique de ton parcours et tous tes fichiers audio. C'est définitif.">In the app: <span class="kbd">Profile → Delete my account</span>. This deletes your account and first name, your goals, your journey history and all your audio files. It's permanent.</p>
+            <p data-fr="Tu ne peux plus ouvrir l'app ? Écris-nous à &lt;a href=&quot;mailto:digest.mtl@gmail.com&quot;&gt;digest.mtl@gmail.com&lt;/a&gt; et on s'en occupe.">Can't open the app anymore? Write to <a href="mailto:digest.mtl@gmail.com">digest.mtl@gmail.com</a> and we'll take care of it.</p>
+          </div>
+        </details>
+        <details class="faq-item">
+          <summary data-fr="Qui peut lire ce que j'écris ?">Who can read what I write?</summary>
+          <div class="answer"><p data-fr="Personne publiquement : rien n'est jamais partagé ni vendu. Pour écrire et lire tes séances, l'app envoie ce qui est nécessaire à des fournisseurs d'IA, uniquement après ton accord. Tout est détaillé dans la &lt;a href=&quot;https://stephanenkengue.github.io/Yana-legal/privacy.html&quot;&gt;politique de confidentialité&lt;/a&gt;.">No one, publicly: nothing is ever shared or sold. To write and voice your sessions, the app sends what's needed to AI providers, only after you consent. It's all detailed in the <a href="https://stephanenkengue.github.io/Yana-legal/privacy-en.html">privacy policy</a>.</p></div>
+        </details>
+        <details class="faq-item">
+          <summary data-fr="Comment changer mon prénom ou la langue ?">How do I change my first name or language?</summary>
+          <div class="answer"><p data-fr="Dans &lt;span class=&quot;kbd&quot;&gt;Profil → Mes réglages&lt;/span&gt; : prénom, voix, rappels, musique de fond et langue (français ou anglais).">In <span class="kbd">Profile → My settings</span>: first name, voice, reminders, background music and language (English or French).</p></div>
+        </details>
+      </div>
+    </div>
+  </section>
+
+  <!-- Séances -->
+  <section id="sessions" class="support-section">
+    <div class="container">
+      <h2 data-fr="Séances &amp; parcours">Sessions &amp; journey</h2>
+      <div class="faq-list">
+        <details class="faq-item">
+          <summary data-fr="Pourquoi je ne peux plus faire ma séance du matin ?">Why can't I do my morning session anymore?</summary>
+          <div class="answer"><p data-fr="La séance du matin reste ouverte jusqu'à midi, heure locale : elle sert à lancer ta journée. Après midi, tu retrouves ton parcours le soir, puis le lendemain matin.">The morning session stays open until noon, local time — it's there to start your day. After noon, you'll pick up your journey in the evening, then the next morning.</p></div>
+        </details>
+        <details class="faq-item">
+          <summary data-fr="Quand s'ouvre la séance du soir ?">When does the evening session open?</summary>
+          <div class="answer"><p data-fr="À l'heure de ton rappel du soir, 21 h par défaut. Tu peux la changer dans &lt;span class=&quot;kbd&quot;&gt;Profil → Mes rappels&lt;/span&gt;.">At your evening reminder time, 9 p.m. by default. You can change it in <span class="kbd">Profile → My reminders</span>.</p></div>
+        </details>
+        <details class="faq-item">
+          <summary data-fr="Puis-je réécouter ou régénérer une séance ?">Can I replay or regenerate a session?</summary>
+          <div class="answer"><p data-fr="Chaque créneau se fait une fois par jour : un matin, un soir. On ne régénère pas une séance — c'est ce qui la rend propre à ce jour-là.">Each slot happens once a day: one morning, one evening. Sessions aren't regenerated — that's what makes each one belong to its day.</p></div>
+        </details>
+        <details class="faq-item">
+          <summary data-fr="J'ai raté un jour. Ai-je perdu ma progression ?">I missed a day. Did I lose my progress?</summary>
+          <div class="answer"><p data-fr="Non. Un jour manqué met ton parcours en pause, il ne fait pas sauter de jour. Tu reprends exactement là où tu en étais.">No. A missed day pauses your journey; it doesn't skip ahead. You pick up exactly where you left off.</p></div>
+        </details>
+        <details class="faq-item">
+          <summary data-fr="Puis-je avoir plusieurs objectifs ?">Can I have several goals?</summary>
+          <div class="answer"><p data-fr="Oui, jusqu'à 3 objectifs actifs. Chaque jour, un seul prend ta séance du matin et celle du soir ; les autres attendent leur tour, sans perdre leur progression.">Yes, up to 3 active goals. Each day, only one takes your morning and evening sessions; the others wait their turn without losing progress.</p></div>
+        </details>
+        <details class="faq-item">
+          <summary data-fr="Mon parcours est terminé. Et maintenant ?">My journey is over. What now?</summary>
+          <div class="answer"><p data-fr="Tu peux voir ton bilan, prolonger ton parcours de quelques jours, ou choisir une nouvelle direction. Ton historique est toujours conservé.">You can view your recap, extend your journey, or choose a new direction. Your history is always kept.</p></div>
+        </details>
+      </div>
+    </div>
+  </section>
+
+  <!-- Audio -->
+  <section id="audio" class="support-section">
+    <div class="container">
+      <h2 data-fr="Audio &amp; rappels">Audio &amp; reminders</h2>
+      <div class="faq-list">
+        <details class="faq-item">
+          <summary data-fr="Ma séance ne se charge pas.">My session won't load.</summary>
+          <div class="answer">
+            <p data-fr="Ta séance est écrite et enregistrée au moment où tu la lances : il faut une connexion internet. Si elle échoue, touche « Réessayer » — elle reprend là où elle s'était arrêtée, sans compter une séance de plus.">Your session is written and recorded when you start it, so you need an internet connection. If it fails, tap “Try again” — it resumes where it stopped, without counting as an extra session.</p>
+            <p data-fr="Toujours bloqué ? Écris-nous avec l'heure approximative du problème.">Still stuck? Write to us with the approximate time it happened.</p>
+          </div>
+        </details>
+        <details class="faq-item">
+          <summary data-fr="Je n'entends rien.">I can't hear anything.</summary>
+          <div class="answer"><p data-fr="Vérifie le volume et que ton iPhone n'est pas relié à un appareil Bluetooth éloigné. La musique de fond se règle (ou se coupe) dans &lt;span class=&quot;kbd&quot;&gt;Profil → Musique de fond&lt;/span&gt;.">Check the volume and that your iPhone isn't connected to a Bluetooth device elsewhere. Background music can be adjusted (or turned off) in <span class="kbd">Profile → Background music</span>.</p></div>
+        </details>
+        <details class="faq-item">
+          <summary data-fr="Comment changer de voix ou de débit ?">How do I change the voice or pace?</summary>
+          <div class="answer"><p data-fr="Dans &lt;span class=&quot;kbd&quot;&gt;Profil → Ma voix&lt;/span&gt; : écoute les voix disponibles, choisis-en une et règle sa vitesse. Le changement s'applique à ta prochaine séance.">In <span class="kbd">Profile → My voice</span>: listen to the available voices, pick one and set its speed. The change applies to your next session.</p></div>
+        </details>
+        <details class="faq-item">
+          <summary data-fr="Je ne reçois pas mes rappels.">I'm not getting my reminders.</summary>
+          <div class="answer">
+            <ol class="steps-inline">
+              <li data-fr="Ouvre &lt;span class=&quot;kbd&quot;&gt;Réglages → Notifications → Yana&lt;/span&gt; et active « Autoriser les notifications ».">Open <span class="kbd">Settings → Notifications → Yana</span> and turn on “Allow Notifications”.</li>
+              <li data-fr="Vérifie qu'un mode Concentration ne bloque pas Yana.">Make sure a Focus mode isn't silencing Yana.</li>
+              <li data-fr="Dans Yana, ouvre &lt;span class=&quot;kbd&quot;&gt;Profil → Mes rappels&lt;/span&gt; et vérifie les heures choisies.">In Yana, open <span class="kbd">Profile → My reminders</span> and check the times you picked.</li>
+            </ol>
+          </div>
+        </details>
+      </div>
+    </div>
+  </section>
+
+
+  <section class="final-cta" style="padding-top:80px">
+    <div class="container">
+      <div class="final-card">
+        <div>
+          <h2 data-fr="Tu n'as pas trouvé &lt;em&gt;ta réponse ?&lt;/em&gt;">Didn't find <em>your answer?</em></h2>
+          <p data-fr="Écris-nous, même pour une suggestion. Yana est toute jeune : tes retours façonnent la suite.">Write to us, even for a suggestion. Yana is brand new — your feedback shapes what comes next.</p>
+          <a href="mailto:digest.mtl@gmail.com" class="btn btn-ink">digest.mtl@gmail.com</a>
+        </div>
+        <picture><source srcset="/assets/figure.avif" type="image/avif"><img src="/assets/figure.png" alt="" loading="lazy" width="648" height="720"></picture>
+      </div>
+    </div>
+  </section>
+
+</main>
+
+<footer class="site-footer">
+  <div class="container">
+    <div class="footer-grid">
+      <div class="footer-brand">
+        <a href="{{home}}" class="logo">Yana</a>
+        <p data-fr="Manifeste et visualise. Deux courtes séances par jour, écrites pour ton objectif.">Manifest &amp; visualize. Two short sessions a day, written for your goal.</p>
+      </div>
+      <div class="footer-col">
+        <h4 data-fr="L'app">The app</h4>
+        <a href="{{home}}#how" data-fr="Comment ça marche">How it works</a>
+        <a href="{{home}}#ritual" data-fr="Le rituel">The ritual</a>
+        <a href="{{home}}#faq">FAQ</a>
+      </div>
+      <div class="footer-col">
+        <h4 data-fr="Aide">Help</h4>
+        <a href="{{base}}/support">Support</a>
+        <a href="mailto:digest.mtl@gmail.com">digest.mtl@gmail.com</a>
+        <a href="https://stephanenkengue.github.io/Yana-legal/terms-en.html" data-fr-href="https://stephanenkengue.github.io/Yana-legal/terms.html" data-fr="Conditions d'utilisation">Terms of Use</a>
+        <a href="https://stephanenkengue.github.io/Yana-legal/privacy-en.html" data-fr-href="https://stephanenkengue.github.io/Yana-legal/privacy.html" data-fr="Politique de confidentialité">Privacy Policy</a>
+      </div>
+    </div>
+    <div class="footer-bottom">
+      <span>&copy; 2026 Yana. <span data-fr="Tous droits réservés.">All rights reserved.</span></span>
+      <span data-fr="Construis la vie que tu veux.">Build the life you want.</span>
+    </div>
+  </div>
+</footer>
+
+{{jsonld}}
+<script src="/script.js"></script>
+</body>
+</html>

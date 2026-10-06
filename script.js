@@ -5,35 +5,36 @@
   const APP_STORE_URL = "";
 
   const html = document.documentElement;
-  const toggle = document.getElementById("lang-toggle");
+  const lang = html.getAttribute("lang") === "fr" ? "fr" : "en";
 
   // ---------- Langue ----------
-  // Le HTML porte l'anglais ; `data-fr` porte le français. On garde l'anglais
-  // d'origine en mémoire pour pouvoir y revenir.
-  const textEls = Array.from(document.querySelectorAll("[data-fr]"));
-  textEls.forEach((el) => { el.dataset.en = el.innerHTML; });
-  const hrefEls = Array.from(document.querySelectorAll("[data-fr-href]"));
-  hrefEls.forEach((el) => { el.dataset.enHref = el.getAttribute("href"); });
-
-  const strings = {
-    en: { soonSmall: "Coming soon on the", liveSmall: "Download on the", soonNote: "Coming soon on the App Store", liveNote: "Available on the App Store", liveBtn: "Download" },
-    fr: { soonSmall: "Bientôt sur", liveSmall: "Télécharger dans", soonNote: "Bientôt sur l'App Store", liveNote: "Disponible sur l'App Store", liveBtn: "Télécharger" },
-  };
-
-  function applyLang(lang) {
-    html.setAttribute("data-lang", lang);
-    html.setAttribute("lang", lang);
-    textEls.forEach((el) => { el.innerHTML = lang === "fr" ? el.dataset.fr : el.dataset.en; });
-    hrefEls.forEach((el) => { el.setAttribute("href", lang === "fr" ? el.dataset.frHref : el.dataset.enHref); });
-    if (toggle) toggle.textContent = lang === "en" ? "FR" : "EN";
-    applyStore(lang);
-    restartRotator(lang);
-    try { localStorage.setItem("yana-lang", lang); } catch (e) { /* stockage indisponible */ }
+  // Chaque langue a ses propres pages (/ et /fr) : le bouton FR/EN est un
+  // simple lien. On retient le choix pour ne pas rediriger quelqu'un qui a
+  // choisi l'anglais.
+  function remember(value) {
+    try { localStorage.setItem("yana-lang", value); } catch (e) { /* stockage indisponible */ }
   }
+  const toggle = document.getElementById("lang-toggle");
+  if (toggle) toggle.addEventListener("click", () => remember(toggle.getAttribute("hreflang")));
+
+  // Première visite d'une page anglaise depuis un navigateur en français :
+  // on propose directement la version française.
+  let saved = null;
+  try { saved = localStorage.getItem("yana-lang"); } catch (e) { /* stockage indisponible */ }
+  const browserFr = (navigator.language || "").toLowerCase().startsWith("fr");
+  if (lang === "en" && !saved && browserFr && toggle) {
+    remember("fr");
+    location.replace(toggle.getAttribute("href") + location.hash);
+    return;
+  }
+  if (!saved) remember(lang);
 
   // ---------- Boutons App Store ----------
-  function applyStore(lang) {
-    if (!APP_STORE_URL) return;
+  const strings = {
+    en: { liveSmall: "Download on the", liveNote: "Available on the App Store", liveBtn: "Download" },
+    fr: { liveSmall: "Télécharger dans", liveNote: "Disponible sur l'App Store", liveBtn: "Télécharger" },
+  };
+  if (APP_STORE_URL) {
     const s = strings[lang];
     document.querySelectorAll(".js-store").forEach((a) => {
       a.setAttribute("href", APP_STORE_URL);
@@ -50,39 +51,22 @@
   }
 
   // ---------- Mot qui tourne dans le hero ----------
-  const rotator = document.getElementById("rotator");
-  let rotateTimer = null;
   const reduceMotion = window.matchMedia("(prefers-reduced-motion: reduce)").matches;
-
-  function restartRotator(lang) {
-    if (!rotator) return;
-    clearInterval(rotateTimer);
+  const rotator = document.getElementById("rotator");
+  if (rotator && !reduceMotion) {
     const words = (rotator.getAttribute(`data-words-${lang}`) || "").split("|");
     let i = 0;
-    rotator.textContent = words[0];
-    if (reduceMotion || words.length < 2) return;
-    rotateTimer = setInterval(() => {
-      rotator.classList.add("out");
-      setTimeout(() => {
-        i = (i + 1) % words.length;
-        rotator.textContent = words[i];
-        rotator.classList.remove("out");
-      }, 350);
-    }, 2600);
+    if (words.length > 1) {
+      setInterval(() => {
+        rotator.classList.add("out");
+        setTimeout(() => {
+          i = (i + 1) % words.length;
+          rotator.textContent = words[i];
+          rotator.classList.remove("out");
+        }, 350);
+      }, 2600);
+    }
   }
-
-  if (toggle) {
-    toggle.addEventListener("click", () => {
-      applyLang(html.getAttribute("data-lang") === "en" ? "fr" : "en");
-    });
-  }
-
-  let initial = (navigator.language || "en").toLowerCase().startsWith("fr") ? "fr" : "en";
-  try {
-    const saved = localStorage.getItem("yana-lang");
-    if (saved === "en" || saved === "fr") initial = saved;
-  } catch (e) { /* stockage indisponible : langue du navigateur */ }
-  applyLang(initial);
 
   // ---------- En-tête au défilement + barre mobile ----------
   const header = document.querySelector(".site-header");

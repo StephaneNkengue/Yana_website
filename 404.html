@@ -1,10 +1,11 @@
 <!DOCTYPE html>
-<html lang="en" data-lang="en">
+<html lang="en">
 <head>
 <meta charset="UTF-8">
 <meta name="viewport" content="width=device-width, initial-scale=1.0">
-<title>Page not found — Yana</title>
+<title>Page not found · Page introuvable — Yana</title>
 <meta name="robots" content="noindex">
+<meta name="theme-color" content="#EEE8F8">
 <link rel="icon" type="image/png" href="/assets/favicon.png">
 <link rel="preconnect" href="https://fonts.googleapis.com">
 <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
@@ -15,19 +16,17 @@
 <header class="site-header">
   <div class="container header-inner">
     <a href="/" class="logo" aria-label="Yana">Yana</a>
-    <div class="header-actions">
-      <button id="lang-toggle" class="lang-toggle" aria-label="Switch language">FR</button>
-    </div>
   </div>
 </header>
 <main class="container notfound">
   <div>
-    <img src="/assets/figure.png" alt="" width="720" height="800">
-    <h1 data-fr="Cette page &lt;em&gt;n'existe pas.&lt;/em&gt;">This page <em>doesn't exist.</em></h1>
-    <p data-fr="Respire. On te ramène à l'accueil.">Breathe. Let's take you back home.</p>
-    <a href="/" class="btn btn-ink" data-fr="Revenir à l'accueil">Back to home</a>
+    <picture><source srcset="/assets/figure.avif" type="image/avif"><img src="/assets/figure.png" alt="" width="648" height="720"></picture>
+    <h1>This page <em>doesn't exist.</em></h1>
+    <p>Breathe. Let's take you back home.</p>
+    <p lang="fr"><em>Cette page n'existe pas.</em> Respire, on te ramène à l'accueil.</p>
+    <a href="/" class="btn btn-ink">Home</a>
+    <a href="/fr" class="btn btn-ghost" lang="fr">Accueil</a>
   </div>
 </main>
-<script src="/script.js"></script>
 </body>
 </html>
