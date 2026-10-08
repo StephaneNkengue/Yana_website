@@ -68,6 +68,22 @@
         </p>
 
         <div class="hero-cta" id="download">
+          <div class="waitlist">
+            <form class="waitlist-form js-signup-form" novalidate>
+              <div class="waitlist-row">
+                <label class="visually-hidden" for="waitlist-email-hero">Ton adresse email</label>
+                <input type="email" id="waitlist-email-hero" name="email" autocomplete="email" required>
+                <button type="submit" class="btn btn-accent">Rejoindre la liste d'attente</button>
+              </div>
+              <input type="text" name="website" class="signup-trap" tabindex="-1" autocomplete="off" aria-hidden="true">
+              <label class="signup-consent">
+                <input type="checkbox" name="consent" required>
+                <span>J'accepte de recevoir des emails de Yana à propos du lancement</span>
+              </label>
+              <p class="signup-msg" role="status" aria-live="polite"></p>
+            </form>
+            <p class="waitlist-done js-signup-done" hidden>Tu es sur la liste d'attente. On te prévient dès le lancement !</p>
+          </div>
           <a class="store-badge js-store" aria-disabled="true" role="link">
             <svg viewBox="0 0 24 24" fill="currentColor" aria-hidden="true"><path d="M16.37 12.6c-.02-2.2 1.8-3.26 1.88-3.31-1.03-1.5-2.62-1.7-3.19-1.73-1.36-.14-2.65.8-3.34.8-.69 0-1.75-.78-2.88-.76-1.48.02-2.85.86-3.61 2.19-1.54 2.67-.39 6.63 1.11 8.8.73 1.06 1.6 2.25 2.75 2.2 1.1-.04 1.52-.71 2.85-.71 1.33 0 1.71.71 2.88.69 1.19-.02 1.94-1.08 2.67-2.14.84-1.23 1.19-2.42 1.21-2.48-.03-.01-2.32-.89-2.33-3.55zM14.2 6.13c.61-.74 1.02-1.76.91-2.78-.88.04-1.94.59-2.57 1.32-.56.65-1.06 1.69-.93 2.69.98.08 1.98-.5 2.59-1.23z"/></svg>
             <span>
@@ -336,6 +352,22 @@
         <div>
           <h2>Demain matin, <em>commence autrement.</em></h2>
           <p>Yana arrive bientôt sur l'App Store. Une séance le matin, une séance le soir : le reste, c'est toi qui le construis.</p>
+          <div class="waitlist">
+            <form class="waitlist-form js-signup-form" novalidate>
+              <div class="waitlist-row">
+                <label class="visually-hidden" for="waitlist-email-end">Ton adresse email</label>
+                <input type="email" id="waitlist-email-end" name="email" autocomplete="email" required>
+                <button type="submit" class="btn btn-accent">Rejoindre la liste d'attente</button>
+              </div>
+              <input type="text" name="website" class="signup-trap" tabindex="-1" autocomplete="off" aria-hidden="true">
+              <label class="signup-consent">
+                <input type="checkbox" name="consent" required>
+                <span>J'accepte de recevoir des emails de Yana à propos du lancement</span>
+              </label>
+              <p class="signup-msg" role="status" aria-live="polite"></p>
+            </form>
+            <p class="waitlist-done js-signup-done" hidden>Tu es sur la liste d'attente. On te prévient dès le lancement !</p>
+          </div>
           <a class="store-badge js-store" aria-disabled="true" role="link">
             <svg viewBox="0 0 24 24" fill="currentColor" aria-hidden="true"><path d="M16.37 12.6c-.02-2.2 1.8-3.26 1.88-3.31-1.03-1.5-2.62-1.7-3.19-1.73-1.36-.14-2.65.8-3.34.8-.69 0-1.75-.78-2.88-.76-1.48.02-2.85.86-3.61 2.19-1.54 2.67-.39 6.63 1.11 8.8.73 1.06 1.6 2.25 2.75 2.2 1.1-.04 1.52-.71 2.85-.71 1.33 0 1.71.71 2.88.69 1.19-.02 1.94-1.08 2.67-2.14.84-1.23 1.19-2.42 1.21-2.48-.03-.01-2.32-.89-2.33-3.55zM14.2 6.13c.61-.74 1.02-1.76.91-2.78-.88.04-1.94.59-2.57 1.32-.56.65-1.06 1.69-.93 2.69.98.08 1.98-.5 2.59-1.23z"/></svg>
             <span>
@@ -355,7 +387,7 @@
   <button type="button" class="signup-close js-signup-close" aria-label="Close">&times;</button>
   <span class="eyebrow">Bientôt sur l'App Store</span>
   <h2 id="signup-title">Sois averti du lancement et reçois une <em>séance audio gratuite</em> en cadeau</h2>
-  <form class="signup-form" id="signup-form" novalidate>
+  <form class="signup-form js-signup-form" novalidate>
     <label class="visually-hidden" for="signup-email">Ton adresse email</label>
     <input type="email" id="signup-email" name="email" autocomplete="email" required>
     <input type="text" name="website" class="signup-trap" tabindex="-1" autocomplete="off" aria-hidden="true">
@@ -364,10 +396,10 @@
       <span>J'accepte de recevoir des emails de Yana à propos du lancement</span>
     </label>
     <button type="submit" class="btn btn-ink">Je m'inscris</button>
-    <p class="signup-msg" id="signup-msg" role="status" aria-live="polite"></p>
+    <p class="signup-msg" role="status" aria-live="polite"></p>
   </form>
-  <div class="signup-done" id="signup-done" hidden>
-    <p>C'est noté ! Ta séance t'attend dans ta boîte mail.</p>
+  <div class="signup-done js-signup-done" hidden>
+    <p>C'est noté ! Un email de bienvenue t'attend dans ta boîte mail.</p>
     <button type="button" class="btn btn-ghost js-signup-close">Fermer</button>
   </div>
 </dialog>
@@ -375,7 +407,7 @@
 <div class="mobile-cta" id="mobile-cta" aria-hidden="true">
   <img src="/assets/icon.png" alt="">
   <span class="txt"><b>Yana</b><small class="js-store-note-short">Bientôt sur l'App Store</small></span>
-  <a class="btn btn-ink btn-sm js-store-btn" href="#download">En savoir plus</a>
+  <a class="btn btn-ink btn-sm js-store-btn" href="#download">Liste d'attente</a>
 </div>
 
 <footer class="site-footer">

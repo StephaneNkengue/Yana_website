@@ -110,53 +110,46 @@
     reveals.forEach((el) => el.classList.add("in"));
   }
 
-  // ---------- Popup d'inscription au lancement ----------
-  // Page d'accueil seulement : s'ouvre après 8 s ou à mi-page, une seule fois
-  // par visiteur.
-  const signup = document.getElementById("signup");
-  let seen = true;
-  try { seen = localStorage.getItem("yana-signup-seen") === "1"; } catch (e) { /* stockage indisponible : on n'insiste pas */ }
-  if (signup && typeof signup.showModal === "function" && !seen) {
-    const msgs = {
-      en: {
-        placeholder: "your@email.com", close: "Close", sending: "One moment…",
-        invalid_email: "That email address doesn't look right.",
-        consent_required: "Please tick the box to receive emails from Yana.",
-        already_subscribed: "You're already on the list. See you at launch!",
-        server_error: "Something went wrong on our end. Please try again in a moment.",
-      },
-      fr: {
-        placeholder: "ton@email.com", close: "Fermer", sending: "Un instant…",
-        invalid_email: "Cette adresse email ne semble pas valide.",
-        consent_required: "Coche la case pour recevoir les emails de Yana.",
-        already_subscribed: "Tu es déjà inscrit·e. À très vite pour le lancement !",
-        server_error: "Un souci de notre côté. Réessaie dans un instant.",
-      },
-    }[lang];
-    const form = document.getElementById("signup-form");
-    const msg = document.getElementById("signup-msg");
+  // ---------- Liste d'attente : formulaires et popup ----------
+  // Les formulaires .js-signup-form (hero, bas de page, popup) envoient tous à
+  // /api/subscribe. Une fois inscrit, on le retient : la popup ne s'ouvre plus
+  // et les formulaires affichent directement leur message de confirmation.
+  const msgs = {
+    en: {
+      placeholder: "your@email.com", close: "Close", sending: "One moment…",
+      invalid_email: "That email address doesn't look right.",
+      consent_required: "Please tick the box to receive emails from Yana.",
+      already_subscribed: "You're already on the list. See you at launch!",
+      server_error: "Something went wrong on our end. Please try again in a moment.",
+    },
+    fr: {
+      placeholder: "ton@email.com", close: "Fermer", sending: "Un instant…",
+      invalid_email: "Cette adresse email ne semble pas valide.",
+      consent_required: "Coche la case pour recevoir les emails de Yana.",
+      already_subscribed: "Tu es déjà inscrit·e. À très vite pour le lancement !",
+      server_error: "Un souci de notre côté. Réessaie dans un instant.",
+    },
+  }[lang];
+
+  let subscribed = false;
+  try { subscribed = localStorage.getItem("yana-subscribed") === "1"; } catch (e) { /* stockage indisponible */ }
+
+  function showDone(form) {
+    form.hidden = true;
+    const done = form.parentElement.querySelector(".js-signup-done");
+    if (done) done.hidden = false;
+  }
+  function markSubscribed() {
+    subscribed = true;
+    try { localStorage.setItem("yana-subscribed", "1"); } catch (e) { /* stockage indisponible */ }
+    document.querySelectorAll(".waitlist .js-signup-form").forEach(showDone);
+  }
+
+  document.querySelectorAll(".js-signup-form").forEach((form) => {
+    const msg = form.querySelector(".signup-msg");
     const submit = form.querySelector('button[type="submit"]');
     form.email.placeholder = msgs.placeholder;
-    signup.querySelector(".signup-close").setAttribute("aria-label", msgs.close);
-
-    let timer;
-    function open() {
-      clearTimeout(timer);
-      window.removeEventListener("scroll", onHalf);
-      if (signup.open || document.querySelector("dialog[open]")) return;
-      try { localStorage.setItem("yana-signup-seen", "1"); } catch (e) { /* stockage indisponible */ }
-      signup.showModal();
-    }
-    function onHalf() {
-      const max = document.documentElement.scrollHeight - window.innerHeight;
-      if (max > 0 && window.scrollY / max >= 0.5) open();
-    }
-    timer = setTimeout(open, 8000);
-    window.addEventListener("scroll", onHalf, { passive: true });
-
-    signup.querySelectorAll(".js-signup-close").forEach((b) => b.addEventListener("click", () => signup.close()));
-    // Clic sur le fond assombri : ferme la popup.
-    signup.addEventListener("click", (e) => { if (e.target === signup) signup.close(); });
+    if (subscribed && form.closest(".waitlist")) { showDone(form); return; }
 
     form.addEventListener("submit", async (e) => {
       e.preventDefault();
@@ -176,10 +169,12 @@
         });
         const data = await res.json().catch(() => ({}));
         if (res.ok) {
-          form.hidden = true;
-          document.getElementById("signup-done").hidden = false;
+          msg.textContent = "";
+          showDone(form);
+          markSubscribed();
         } else {
           msg.textContent = msgs[data.error] || msgs.server_error;
+          if (data.error === "already_subscribed") markSubscribed();
         }
       } catch (err) {
         msg.textContent = msgs.server_error;
@@ -187,5 +182,32 @@
         submit.disabled = false;
       }
     });
+  });
+
+  // Popup (page d'accueil) : s'ouvre après 8 s ou à mi-page, à chaque visite
+  // tant que le visiteur ne s'est pas inscrit.
+  const signup = document.getElementById("signup");
+  if (signup && typeof signup.showModal === "function" && !subscribed) {
+    signup.querySelector(".signup-close").setAttribute("aria-label", msgs.close);
+
+    let timer;
+    function open() {
+      clearTimeout(timer);
+      window.removeEventListener("scroll", onHalf);
+      if (subscribed || signup.open || document.querySelector("dialog[open]")) return;
+      // Ne pas couper quelqu'un qui remplit déjà un formulaire de la page.
+      if (document.activeElement && document.activeElement.closest(".js-signup-form")) return;
+      signup.showModal();
+    }
+    function onHalf() {
+      const max = document.documentElement.scrollHeight - window.innerHeight;
+      if (max > 0 && window.scrollY / max >= 0.5) open();
+    }
+    timer = setTimeout(open, 8000);
+    window.addEventListener("scroll", onHalf, { passive: true });
+
+    signup.querySelectorAll(".js-signup-close").forEach((b) => b.addEventListener("click", () => signup.close()));
+    // Clic sur le fond assombri : ferme la popup.
+    signup.addEventListener("click", (e) => { if (e.target === signup) signup.close(); });
   }
 })();

@@ -800,3 +800,41 @@ section { padding: 100px 0; }
 .signup-msg:empty { display: none; }
 .signup-done p { font-size: 1.05rem; margin-bottom: 20px; }
 @media (prefers-reduced-motion: reduce) { .signup[open] { animation: none; } }
+
+/* ---------- Liste d'attente (hero et bas de page) ---------- */
+.waitlist { width: 100%; max-width: 480px; margin-bottom: 26px; }
+.waitlist-form { display: flex; flex-direction: column; gap: 12px; text-align: left; }
+.waitlist-row {
+  display: flex; gap: 6px; padding: 6px;
+  border-radius: 999px; background: var(--surface-strong);
+  border: 1px solid var(--border); box-shadow: var(--shadow);
+}
+.waitlist-row input[type="email"] {
+  flex: 1; min-width: 0; font: inherit; font-size: 1rem;
+  padding: 10px 16px; border: 0; background: transparent; color: var(--text);
+}
+.waitlist-row input[type="email"]:focus { outline: none; }
+.waitlist-row:focus-within { outline: 2px solid var(--accent); outline-offset: 2px; }
+.waitlist-row .btn { padding: 12px 22px; white-space: nowrap; }
+.waitlist-row .btn[disabled] { opacity: 0.6; cursor: progress; transform: none; }
+.waitlist .signup-consent { padding: 0 8px; }
+.waitlist .signup-msg { text-align: left; padding: 0 8px; }
+.waitlist-done {
+  display: inline-block; padding: 12px 20px; border-radius: 999px;
+  background: var(--accent-soft); color: var(--rationale); font-weight: 600; font-size: 0.95rem;
+}
+.final-card .waitlist-done { color: var(--rationale); margin-bottom: 0; }
+@media (max-width: 1000px) {
+  .hero-cta .waitlist { margin-left: auto; margin-right: auto; }
+}
+@media (max-width: 760px) {
+  .final-card .waitlist { margin-left: auto; margin-right: auto; }
+}
+@media (max-width: 520px) {
+  .waitlist-row { flex-direction: column; border-radius: 22px; padding: 8px; }
+  .waitlist-row input[type="email"] { padding: 12px 14px; text-align: center; }
+  .waitlist-row .btn { width: 100%; }
+}
+.js-signup-form[hidden], .js-signup-done[hidden] { display: none !important; }
+.final-card .signup-msg { color: var(--accent); margin-bottom: 0; max-width: none; }
+.final-card .waitlist-done { max-width: none; }
