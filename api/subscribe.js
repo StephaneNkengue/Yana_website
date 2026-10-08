@@ -143,7 +143,12 @@ module.exports = async (req, res) => {
     }
 
     const sent = await sendWelcome(email, lang);
-    if (sent.status >= 300) throw new Error("send email: " + JSON.stringify(sent));
+    if (sent.status >= 300) {
+      // Sans email de bienvenue, on retire le contact de la liste : sinon un
+      // nouvel essai répondrait « déjà inscrit » sans jamais rien envoyer.
+      await resend("DELETE", `${path}/segments/${segment}`).catch(() => {});
+      throw new Error("send email: " + JSON.stringify(sent));
+    }
 
     return res.status(200).json({ ok: true });
   } catch (err) {
