@@ -351,6 +351,27 @@
 
 </main>
 
+<dialog class="signup" id="signup" aria-labelledby="signup-title">
+  <button type="button" class="signup-close js-signup-close" aria-label="Close">&times;</button>
+  <span class="eyebrow">Bientôt sur l'App Store</span>
+  <h2 id="signup-title">Sois averti du lancement et reçois une <em>séance audio gratuite</em> en cadeau</h2>
+  <form class="signup-form" id="signup-form" novalidate>
+    <label class="visually-hidden" for="signup-email">Ton adresse email</label>
+    <input type="email" id="signup-email" name="email" autocomplete="email" required>
+    <input type="text" name="website" class="signup-trap" tabindex="-1" autocomplete="off" aria-hidden="true">
+    <label class="signup-consent">
+      <input type="checkbox" name="consent" required>
+      <span>J'accepte de recevoir des emails de Yana à propos du lancement</span>
+    </label>
+    <button type="submit" class="btn btn-ink">Je m'inscris</button>
+    <p class="signup-msg" id="signup-msg" role="status" aria-live="polite"></p>
+  </form>
+  <div class="signup-done" id="signup-done" hidden>
+    <p>C'est noté ! Ta séance t'attend dans ta boîte mail.</p>
+    <button type="button" class="btn btn-ghost js-signup-close">Fermer</button>
+  </div>
+</dialog>
+
 <div class="mobile-cta" id="mobile-cta" aria-hidden="true">
   <img src="/assets/icon.png" alt="">
   <span class="txt"><b>Yana</b><small class="js-store-note-short">Bientôt sur l'App Store</small></span>

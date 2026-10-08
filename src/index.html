@@ -334,6 +334,27 @@
 
 </main>
 
+<dialog class="signup" id="signup" aria-labelledby="signup-title">
+  <button type="button" class="signup-close js-signup-close" aria-label="Close">&times;</button>
+  <span class="eyebrow" data-fr="Bientôt sur l'App Store">Coming soon on the App Store</span>
+  <h2 id="signup-title" data-fr="Sois averti du lancement et reçois une &lt;em&gt;séance audio gratuite&lt;/em&gt; en cadeau">Be the first to know at launch and get a <em>free audio session</em> as a gift</h2>
+  <form class="signup-form" id="signup-form" novalidate>
+    <label class="visually-hidden" for="signup-email" data-fr="Ton adresse email">Your email address</label>
+    <input type="email" id="signup-email" name="email" autocomplete="email" required>
+    <input type="text" name="website" class="signup-trap" tabindex="-1" autocomplete="off" aria-hidden="true">
+    <label class="signup-consent">
+      <input type="checkbox" name="consent" required>
+      <span data-fr="J'accepte de recevoir des emails de Yana à propos du lancement">I agree to receive emails from Yana about the launch</span>
+    </label>
+    <button type="submit" class="btn btn-ink" data-fr="Je m'inscris">Sign me up</button>
+    <p class="signup-msg" id="signup-msg" role="status" aria-live="polite"></p>
+  </form>
+  <div class="signup-done" id="signup-done" hidden>
+    <p data-fr="C'est noté ! Ta séance t'attend dans ta boîte mail.">You're in! Your session is waiting in your inbox.</p>
+    <button type="button" class="btn btn-ghost js-signup-close" data-fr="Fermer">Close</button>
+  </div>
+</dialog>
+
 <div class="mobile-cta" id="mobile-cta" aria-hidden="true">
   <img src="/assets/icon.png" alt="">
   <span class="txt"><b>Yana</b><small class="js-store-note-short" data-fr="Bientôt sur l'App Store">Coming soon on the App Store</small></span>

@@ -756,3 +756,47 @@ section { padding: 100px 0; }
   .topics { grid-template-columns: 1fr; }
   .phone { width: 252px; height: 516px; }
 }
+
+/* ---------- Popup d'inscription (liste de lancement) ---------- */
+.visually-hidden {
+  position: absolute; width: 1px; height: 1px; overflow: hidden;
+  clip: rect(0 0 0 0); clip-path: inset(50%); white-space: nowrap;
+}
+.signup {
+  width: min(440px, calc(100% - 32px));
+  margin: auto;
+  border: 1px solid var(--border);
+  border-radius: var(--radius);
+  padding: 36px 30px 30px;
+  background: var(--bg-mid);
+  color: var(--text);
+  box-shadow: var(--shadow-lg);
+  text-align: center;
+}
+.signup[open] { animation: signup-in 0.35s ease both; }
+.signup::backdrop { background: rgba(30, 27, 34, 0.35); backdrop-filter: blur(4px); -webkit-backdrop-filter: blur(4px); }
+@keyframes signup-in { from { opacity: 0; transform: translateY(12px); } to { opacity: 1; transform: none; } }
+.signup h2 { font-size: 1.6rem; margin-bottom: 22px; }
+.signup h2 em { color: var(--accent); }
+.signup-close {
+  position: absolute; top: 12px; right: 14px;
+  width: 34px; height: 34px; border: 0; border-radius: 50%;
+  background: transparent; color: var(--text-2); font-size: 1.5rem; line-height: 1; cursor: pointer;
+}
+.signup-close:hover { background: var(--accent-soft); }
+.signup-form { display: flex; flex-direction: column; gap: 14px; text-align: left; }
+.signup-form input[type="email"] {
+  font: inherit; font-size: 1rem; width: 100%;
+  padding: 13px 18px; border-radius: 999px;
+  border: 1px solid var(--track); background: var(--surface-strong); color: var(--text);
+}
+.signup-form input[type="email"]:focus { outline: 2px solid var(--accent); outline-offset: 1px; }
+.signup-consent { display: flex; gap: 10px; align-items: flex-start; font-size: 0.85rem; color: var(--text-3); line-height: 1.45; cursor: pointer; }
+.signup-consent input { margin-top: 2px; width: 17px; height: 17px; flex-shrink: 0; accent-color: var(--accent); }
+.signup-form .btn { width: 100%; }
+.signup-form .btn[disabled] { opacity: 0.6; cursor: progress; transform: none; }
+.signup-trap { position: absolute; left: -9999px; }
+.signup-msg { min-height: 1.3em; font-size: 0.85rem; text-align: center; color: var(--accent); }
+.signup-msg:empty { display: none; }
+.signup-done p { font-size: 1.05rem; margin-bottom: 20px; }
+@media (prefers-reduced-motion: reduce) { .signup[open] { animation: none; } }
