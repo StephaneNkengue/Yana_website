@@ -184,20 +184,30 @@
     });
   });
 
-  // Popup (page d'accueil) : s'ouvre après 8 s ou à mi-page, à chaque visite
-  // tant que le visiteur ne s'est pas inscrit.
+  // Popup (page d'accueil) : carte flottante non bloquante (la page reste
+  // utilisable). S'ouvre après 8 s ou à mi-page ; si le visiteur la ferme
+  // sans s'inscrire, elle revient 45 s plus tard, 3 fois au plus par visite.
   const signup = document.getElementById("signup");
-  if (signup && typeof signup.showModal === "function" && !subscribed) {
+  if (signup && typeof signup.close === "function" && !subscribed) {
     signup.querySelector(".signup-close").setAttribute("aria-label", msgs.close);
 
+    const REOPEN_DELAY = 45000;
+    const MAX_SHOWS = 3;
+    let shows = 0;
     let timer;
     function open() {
       clearTimeout(timer);
       window.removeEventListener("scroll", onHalf);
-      if (subscribed || signup.open || document.querySelector("dialog[open]")) return;
+      if (subscribed || signup.open || shows >= MAX_SHOWS) return;
       // Ne pas couper quelqu'un qui remplit déjà un formulaire de la page.
-      if (document.activeElement && document.activeElement.closest(".js-signup-form")) return;
-      signup.showModal();
+      if (document.activeElement && document.activeElement.closest(".js-signup-form")) {
+        timer = setTimeout(open, REOPEN_DELAY);
+        return;
+      }
+      shows += 1;
+      // Attribut plutôt que show() : la popup ne prend pas le focus (pas de
+      // clavier qui s'ouvre tout seul sur mobile).
+      signup.setAttribute("open", "");
     }
     function onHalf() {
       const max = document.documentElement.scrollHeight - window.innerHeight;
@@ -207,7 +217,9 @@
     window.addEventListener("scroll", onHalf, { passive: true });
 
     signup.querySelectorAll(".js-signup-close").forEach((b) => b.addEventListener("click", () => signup.close()));
-    // Clic sur le fond assombri : ferme la popup.
-    signup.addEventListener("click", (e) => { if (e.target === signup) signup.close(); });
+    document.addEventListener("keydown", (e) => { if (e.key === "Escape" && signup.open) signup.close(); });
+    signup.addEventListener("close", () => {
+      if (!subscribed && shows < MAX_SHOWS) timer = setTimeout(open, REOPEN_DELAY);
+    });
   }
 })();
