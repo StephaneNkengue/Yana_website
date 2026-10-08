@@ -93,6 +93,18 @@ async function sendWelcome(email, lang) {
   });
 }
 
+// Resend refuse les propriétés de contact qui n'ont pas été déclarées dans le
+// compte. Si `ref` ou `lang` manque (nouveau compte), on les crée puis on
+// relance l'appel une fois. Une clé déjà existante est simplement refusée.
+const PROPERTIES = [{ key: "ref", fallback_value: "direct" }, { key: "lang", fallback_value: "en" }];
+
+async function withProperties(call) {
+  const first = await call();
+  if (first.status !== 422 || !/properties do not exist/i.test(first.data && first.data.message)) return first;
+  for (const p of PROPERTIES) await resend("POST", "/contact-properties", { ...p, type: "string" });
+  return call();
+}
+
 module.exports = async (req, res) => {
   if (req.method !== "POST") {
     res.setHeader("Allow", "POST");
@@ -118,9 +130,9 @@ module.exports = async (req, res) => {
     if (existing.status === 404) {
       const properties = { lang };
       if (ref) properties.ref = ref;
-      const created = await resend("POST", "/contacts", {
+      const created = await withProperties(() => resend("POST", "/contacts", {
         email, unsubscribed: false, segments: [{ id: segment }], properties,
-      });
+      }));
       if (created.status >= 300) throw new Error("create contact: " + JSON.stringify(created));
     } else if (existing.status === 200) {
       const segments = await resend("GET", path + "/segments?limit=100");
@@ -132,7 +144,7 @@ module.exports = async (req, res) => {
       // consentement : on le réabonne sans écraser un ref déjà enregistré.
       const update = { unsubscribed: false };
       if (ref && !(existing.data.properties && existing.data.properties.ref)) update.properties = { ref };
-      const patched = await resend("PATCH", path, update);
+      const patched = await withProperties(() => resend("PATCH", path, update));
       if (patched.status >= 300) throw new Error("update contact: " + JSON.stringify(patched));
       if (!inList) {
         const added = await resend("POST", `${path}/segments/${segment}`);
