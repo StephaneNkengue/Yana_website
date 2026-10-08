@@ -28,7 +28,7 @@ Colle le lien de la fiche dans `APP_STORE_URL`, en haut de `script.js`.
 
 ## Liste de lancement (popup + emails)
 
-La page d'accueil ouvre une popup d'inscription (8 s ou mi-page, une fois par visiteur). Elle appelle `api/subscribe.js`, une fonction Vercel qui ajoute le contact au segment Resend et envoie l'email de bienvenue avec la séance offerte (`audio/seance-demo.mp3`, à la racine du site). Les liens `?ref=tiktok` sont enregistrés dans la propriété `ref` du contact. Le lien de désinscription de l'email pointe vers `api/unsubscribe.js`.
+La page d'accueil ouvre une popup d'inscription (8 s ou mi-page, une fois par visiteur). Elle appelle `api/subscribe.js`, une fonction Vercel qui ajoute le contact au segment Resend et envoie l'email de bienvenue. La séance offerte (`audio/seance-demo.mp3`, à la racine du site) y sera ajoutée une fois `AUDIO_URL` renseigné en haut de `api/subscribe.js`. Les liens `?ref=tiktok` sont enregistrés dans la propriété `ref` du contact. Le lien de désinscription de l'email pointe vers `api/unsubscribe.js`.
 
 Variables d'environnement Vercel :
 
