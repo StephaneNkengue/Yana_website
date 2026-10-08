@@ -13,8 +13,8 @@ const TEXT = {
     confirm: "Tu ne recevras plus d'emails de Yana à l'adresse",
     button: "Me désinscrire",
     done: "C'est fait : tu ne recevras plus d'emails de Yana.",
-    invalid: "Ce lien de désinscription n'est pas valide. Écris-nous à digest.mtl@gmail.com et on s'en occupe.",
-    error: "Une erreur est survenue. Réessaie dans un instant, ou écris-nous à digest.mtl@gmail.com.",
+    invalid: "Ce lien de désinscription n'est pas valide. Écris-nous à helloyanasupport@gmail.com et on s'en occupe.",
+    error: "Une erreur est survenue. Réessaie dans un instant, ou écris-nous à helloyanasupport@gmail.com.",
     back: "Retour au site",
   },
   en: {
@@ -22,8 +22,8 @@ const TEXT = {
     confirm: "You will no longer receive emails from Yana at",
     button: "Unsubscribe me",
     done: "Done: you will no longer receive emails from Yana.",
-    invalid: "This unsubscribe link isn't valid. Email us at digest.mtl@gmail.com and we'll take care of it.",
-    error: "Something went wrong. Please try again in a moment, or email us at digest.mtl@gmail.com.",
+    invalid: "This unsubscribe link isn't valid. Email us at helloyanasupport@gmail.com and we'll take care of it.",
+    error: "Something went wrong. Please try again in a moment, or email us at helloyanasupport@gmail.com.",
     back: "Back to the site",
   },
 };

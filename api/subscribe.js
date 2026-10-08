@@ -61,6 +61,7 @@ async function sendWelcome(email, lang) {
   return resend("POST", "/emails", {
     from: process.env.RESEND_FROM,
     to: [email],
+    reply_to: "helloyanasupport@gmail.com",
     subject: t.subject,
     html: emailHtml(t, unsubscribe),
     text: emailText(t, unsubscribe),
