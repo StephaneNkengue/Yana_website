@@ -12,7 +12,7 @@ function isEmail(value) {
 
 // Appel à l'API REST de Resend. Renvoie { status, data } sans lever d'erreur
 // sur un statut HTTP ; une seule nouvelle tentative si la limite de débit
-// (2 requêtes/s par défaut) est atteinte.
+// par seconde est atteinte.
 async function resend(method, path, body, retried) {
   const res = await fetch("https://api.resend.com" + path, {
     method,
@@ -22,12 +22,14 @@ async function resend(method, path, body, retried) {
     },
     body: body ? JSON.stringify(body) : undefined,
   });
-  if (res.status === 429 && !retried) {
+  let data = null;
+  try { data = await res.json(); } catch (e) { /* réponse vide */ }
+  // Seule la limite par seconde vaut un nouvel essai ; un quota journalier ou
+  // mensuel épuisé ne se débloquera pas en une seconde.
+  if (res.status === 429 && !retried && !/quota/.test(data && data.name)) {
     await new Promise((r) => setTimeout(r, 1100));
     return resend(method, path, body, true);
   }
-  let data = null;
-  try { data = await res.json(); } catch (e) { /* réponse vide */ }
   return { status: res.status, data };
 }
 

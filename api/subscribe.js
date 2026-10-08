@@ -3,7 +3,8 @@
 // Corps JSON : { email, consent, ref?, lang?, website? }
 // - ajoute le contact au segment Resend RESEND_AUDIENCE_ID (propriétés ref et lang) ;
 // - envoie l'email de bienvenue (avec le lien vers la séance audio offerte
-//   quand AUDIO_URL est renseigné) et un lien de désinscription.
+//   quand AUDIO_URL est renseigné) et un lien de désinscription. Si le quota
+//   d'envoi Resend est atteint, l'inscription est gardée sans email.
 //
 // Réponses : 200 { ok: true } ou { error } avec un code parmi
 // invalid_email, consent_required, already_subscribed, server_error.
@@ -156,8 +157,14 @@ module.exports = async (req, res) => {
 
     const sent = await sendWelcome(email, lang);
     if (sent.status >= 300) {
-      // Sans email de bienvenue, on retire le contact de la liste : sinon un
-      // nouvel essai répondrait « déjà inscrit » sans jamais rien envoyer.
+      // Quota d'envoi atteint (100 emails/jour en offre gratuite) : on garde
+      // l'inscrit, qui recevra l'annonce du lancement sans l'email de bienvenue.
+      if (sent.status === 429 || /quota/.test(sent.data && sent.data.name)) {
+        console.warn("[subscribe] welcome email skipped, quota reached:", JSON.stringify(sent));
+        return res.status(200).json({ ok: true });
+      }
+      // Autre échec : on retire le contact de la liste, sinon un nouvel essai
+      // répondrait « déjà inscrit » sans jamais rien envoyer.
       await resend("DELETE", `${path}/segments/${segment}`).catch(() => {});
       throw new Error("send email: " + JSON.stringify(sent));
     }
