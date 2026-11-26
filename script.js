@@ -126,7 +126,7 @@
       placeholder: "ton@email.com", close: "Fermer", sending: "Un instant…",
       invalid_email: "Cette adresse email ne semble pas valide.",
       consent_required: "Coche la case pour recevoir les emails de Yana.",
-      already_subscribed: "Tu es déjà inscrit·e. À très vite pour le lancement !",
+      already_subscribed: "Tu es déjà sur la liste. À très vite pour le lancement !",
       server_error: "Un souci de notre côté. Réessaie dans un instant.",
     },
   }[lang];

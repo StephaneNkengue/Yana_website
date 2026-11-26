@@ -4,7 +4,7 @@ Site de [heyyana.com](https://www.heyyana.com), hébergé sur Vercel (site stati
 
 ## Modifier une page
 
-Les pages se modifient **uniquement dans `src/`**. Chaque élément porte l'anglais dans le HTML et le français dans `data-fr` (ou `data-fr-href` pour un lien, `data-fr-content` pour une balise meta).
+Les pages se modifient **uniquement dans `src/`**. Chaque élément porte l'anglais dans le HTML et le français dans `data-fr` (ou `data-fr-href` pour un lien, `data-fr-content` pour une balise meta, `data-fr-alt` pour le texte d'une image). `{{lang}}` dans un chemin donne `en` ou `fr` (captures de l'app par langue).
 
 Après chaque modification :
 
@@ -16,11 +16,15 @@ Le script régénère `index.html`, `support.html`, `fr/index.html`, `fr/support
 
 ## Images
 
+- `assets/shots/<en|fr>-<écran>.webp` : de vraies captures de l'app (600 px de large), tirées des captures App Store (`Yana/scripts/make-store-screenshots.swift` et les captures brutes du simulateur).
+- `assets/icon.png`, `apple-touch-icon.png`, `favicon.png` : l'icône de l'app (le nuage), depuis `Yana/Assets.xcassets/AppIcon.appiconset`.
+- Images de partage :
+
 ```sh
 swift scripts/make-images.swift ../Yana
 ```
 
-Recrée `assets/figure.avif` et les images de partage `assets/og-en.jpg` / `assets/og-fr.jpg` à partir de `assets/figure.png` et des polices de l'app.
+Recrée `assets/og-en.jpg` / `assets/og-fr.jpg` (charte Origine, Manrope, capture du fil).
 
 ## Lancement sur l'App Store
 
@@ -28,7 +32,7 @@ Colle le lien de la fiche dans `APP_STORE_URL`, en haut de `script.js`.
 
 ## Liste de lancement (popup + emails)
 
-La page d'accueil ouvre une popup d'inscription (8 s ou mi-page, une fois par visiteur). Elle appelle `api/subscribe.js`, une fonction Vercel qui ajoute le contact au segment Resend et envoie l'email de bienvenue. La séance offerte (`audio/seance-demo.mp3`, à la racine du site) y sera ajoutée une fois `AUDIO_URL` renseigné en haut de `api/subscribe.js`. Les liens `?ref=tiktok` sont enregistrés dans la propriété `ref` du contact. Le lien de désinscription de l'email pointe vers `api/unsubscribe.js`.
+La page d'accueil ouvre une popup d'inscription (8 s ou mi-page, une fois par visiteur). Elle appelle `api/subscribe.js`, une fonction Vercel qui ajoute le contact au segment Resend et envoie l'email de bienvenue. Les liens `?ref=tiktok` sont enregistrés dans la propriété `ref` du contact. Le lien de désinscription de l'email pointe vers `api/unsubscribe.js`.
 
 Variables d'environnement Vercel :
 

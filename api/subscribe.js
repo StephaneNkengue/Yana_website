@@ -2,8 +2,7 @@
 //
 // Corps JSON : { email, consent, ref?, lang?, website? }
 // - ajoute le contact au segment Resend RESEND_AUDIENCE_ID (propriétés ref et lang) ;
-// - envoie l'email de bienvenue (avec le lien vers la séance audio offerte
-//   quand AUDIO_URL est renseigné) et un lien de désinscription. Si le quota
+// - envoie l'email de bienvenue et un lien de désinscription. Si le quota
 //   d'envoi Resend est atteint, l'inscription est gardée sans email.
 //
 // Réponses : 200 { ok: true } ou { error } avec un code parmi
@@ -11,60 +10,40 @@
 
 const { SITE, isEmail, resend, unsubscribeUrl } = require("./_lib");
 
-// Quand la séance est prête : déposer audio/seance-demo.mp3 à la racine du
-// site et remplacer null par `${SITE}/audio/seance-demo.mp3`.
-const AUDIO_URL = null;
-
 const EMAIL = {
   fr: {
     hello: "Bienvenue, et merci de ton inscription !",
-    footer: "Tu reçois cet email parce que tu t'es inscrit·e sur heyyana.com pour être averti·e du lancement de Yana.",
+    subject: "Bienvenue chez Yana",
+    intro: "Yana arrive très bientôt sur l'App Store : des affirmations et des citations écrites à la main, choisies selon ton mood du jour, jusque sur ton écran verrouillé. On te prévient le jour du lancement.",
+    button: "Découvrir Yana",
+    sign: "À très vite,<br>L'équipe Yana",
+    footer: "Tu reçois cet email parce que tu as laissé ton adresse sur heyyana.com pour suivre le lancement de Yana.",
     unsubscribe: "Se désinscrire",
-    audio: {
-      subject: "Bienvenue chez Yana : ta séance audio offerte",
-      intro: "Tu seras parmi les premiers prévenus quand Yana arrivera sur l'App Store. En attendant, voici ta séance audio offerte : installe-toi au calme, mets tes écouteurs et laisse-toi guider.",
-      button: "Écouter ma séance",
-      sign: "Belle séance,<br>L'équipe Yana",
-    },
-    waiting: {
-      subject: "Bienvenue chez Yana",
-      intro: "Yana arrive très bientôt sur l'App Store : deux courtes séances audio par jour, écrites pour ton objectif. Tu seras parmi les premiers prévenus le jour du lancement, et ta séance audio offerte arrivera dans ta boîte mail d'ici là.",
-      button: "Découvrir Yana",
-      sign: "À très vite,<br>L'équipe Yana",
-    },
   },
   en: {
     hello: "Welcome, and thanks for signing up!",
-    footer: "You're receiving this email because you signed up on heyyana.com to hear about Yana's launch.",
+    subject: "Welcome to Yana",
+    intro: "Yana is coming to the App Store very soon: hand-written affirmations and quotes, picked for your mood of the day, all the way to your Lock Screen. We'll let you know on launch day.",
+    button: "Discover Yana",
+    sign: "See you soon,<br>The Yana team",
+    footer: "You're receiving this email because you left your address on heyyana.com to hear about Yana's launch.",
     unsubscribe: "Unsubscribe",
-    audio: {
-      subject: "Welcome to Yana: your free audio session",
-      intro: "You'll be among the first to know when Yana lands on the App Store. In the meantime, here's your free audio session: find a quiet spot, put your headphones on and let it guide you.",
-      button: "Listen to my session",
-      sign: "Enjoy,<br>The Yana team",
-    },
-    waiting: {
-      subject: "Welcome to Yana",
-      intro: "Yana is coming to the App Store very soon: two short audio sessions a day, written for your goal. You'll be among the first to know on launch day, and your free audio session will land in your inbox before then.",
-      button: "Discover Yana",
-      sign: "See you soon,<br>The Yana team",
-    },
   },
 };
 
 function emailHtml(t, link, unsubscribe) {
   return `<!DOCTYPE html>
-<html><body style="margin:0;padding:0;background:#F5F0FA;font-family:-apple-system,BlinkMacSystemFont,'Segoe UI',Roboto,Helvetica,Arial,sans-serif;color:#1E1B22;">
-<table role="presentation" width="100%" cellpadding="0" cellspacing="0" style="background:#F5F0FA;padding:32px 16px;"><tr><td align="center">
+<html><body style="margin:0;padding:0;background:#D3D8D3;font-family:-apple-system,BlinkMacSystemFont,'Segoe UI',Roboto,Helvetica,Arial,sans-serif;color:#1F2623;">
+<table role="presentation" width="100%" cellpadding="0" cellspacing="0" style="background:#D3D8D3;padding:32px 16px;"><tr><td align="center">
 <table role="presentation" width="100%" cellpadding="0" cellspacing="0" style="max-width:520px;background:#ffffff;border-radius:22px;padding:36px 32px;">
 <tr><td>
-<p style="margin:0 0 24px;font-family:Georgia,serif;font-size:26px;color:#43215C;">Yana</p>
+<p style="margin:0 0 24px;font-size:26px;font-weight:800;color:#1F2623;">Yana</p>
 <p style="margin:0 0 12px;font-size:17px;font-weight:600;">${t.hello}</p>
-<p style="margin:0 0 28px;font-size:15px;line-height:1.6;color:#4D4652;">${t.intro}</p>
-<p style="margin:0 0 28px;"><a href="${link}" style="display:inline-block;background:#1E1B22;color:#ffffff;text-decoration:none;font-weight:600;font-size:15px;padding:14px 26px;border-radius:999px;">${t.button}</a></p>
-<p style="margin:0;font-size:15px;line-height:1.6;color:#4D4652;">${t.sign}</p>
+<p style="margin:0 0 28px;font-size:15px;line-height:1.6;color:#4A5550;">${t.intro}</p>
+<p style="margin:0 0 28px;"><a href="${link}" style="display:inline-block;background:#3A6A62;color:#ffffff;text-decoration:none;font-weight:600;font-size:15px;padding:14px 26px;border-radius:999px;">${t.button}</a></p>
+<p style="margin:0;font-size:15px;line-height:1.6;color:#4A5550;">${t.sign}</p>
 </td></tr></table>
-<p style="max-width:520px;margin:20px auto 0;font-size:12px;line-height:1.5;color:#8D7F97;">${t.footer}<br><a href="${unsubscribe}" style="color:#7D5670;">${t.unsubscribe}</a></p>
+<p style="max-width:520px;margin:20px auto 0;font-size:12px;line-height:1.5;color:#6B7771;">${t.footer}<br><a href="${unsubscribe}" style="color:#3A6A62;">${t.unsubscribe}</a></p>
 </td></tr></table>
 </body></html>`;
 }
@@ -75,14 +54,13 @@ function emailText(t, link, unsubscribe) {
 }
 
 async function sendWelcome(email, lang) {
-  const base = EMAIL[lang];
-  const t = { ...base, ...(AUDIO_URL ? base.audio : base.waiting) };
-  const link = AUDIO_URL || SITE + (lang === "fr" ? "/fr" : "/");
+  const t = EMAIL[lang];
+  const link = SITE + (lang === "fr" ? "/fr" : "/");
   const unsubscribe = unsubscribeUrl(email, lang);
   return resend("POST", "/emails", {
     from: process.env.RESEND_FROM,
     to: [email],
-    reply_to: "helloyanasupport@gmail.com",
+    reply_to: "customersupport.app@gmail.com",
     subject: t.subject,
     html: emailHtml(t, link, unsubscribe),
     text: emailText(t, link, unsubscribe),

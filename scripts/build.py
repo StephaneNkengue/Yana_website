@@ -42,10 +42,11 @@ LANG = {
     "fr": {"locale": "fr_FR", "other": "en", "label": "EN", "base": "/fr", "home": "/fr"},
 }
 APP_DESCRIPTION = {
-    "en": "Yana is a daily manifestation app for iPhone. Two short audio sessions a day, written for your goal: "
-          "visualization, personalized affirmations and one small mission.",
-    "fr": "Yana est une app de manifestation quotidienne pour iPhone. Deux courtes séances audio par jour, écrites "
-          "pour ton objectif : visualisation, affirmations personnalisées et une petite mission.",
+    "en": "Yana is a daily affirmations and quotes app for iPhone. A daily mood question opens your feed on the lines "
+          "you need; hand-written affirmations, maxims and quotes, in widgets on your Home Screen and Lock Screen.",
+    "fr": "Yana est une app d'affirmations et de citations du quotidien pour iPhone. Une question sur ton mood ouvre "
+          "ton fil sur les phrases qu'il te faut ; affirmations, maximes et citations écrites à la main, dans tes "
+          "widgets d'écran d'accueil et d'écran verrouillé.",
 }
 
 
@@ -96,7 +97,8 @@ def translate(source, lang):
 
         source = re.sub(r'<[^>]*\bdata-fr-href="[^"]*"[^>]*>', lambda m: swap(m, "href", "data-fr-href"), source)
         source = re.sub(r'<[^>]*\bdata-fr-content="[^"]*"[^>]*>', lambda m: swap(m, "content", "data-fr-content"), source)
-    return re.sub(r'\s+data-fr(?:-href|-content)?="[^"]*"', "", source)
+        source = re.sub(r'<[^>]*\bdata-fr-alt="[^"]*"[^>]*>', lambda m: swap(m, "alt", "data-fr-alt"), source)
+    return re.sub(r'\s+data-fr(?:-href|-content|-alt)?="[^"]*"', "", source)
 
 
 def plain(fragment):
@@ -118,7 +120,7 @@ def seo_block(page, lang, name):
     other = LANG[lang]["other"]
     e = lambda v: html.escape(v, quote=True)
     return "\n".join([
-        '<meta name="theme-color" content="#EEE8F8">',
+        '<meta name="theme-color" content="#D3D8D3">',
         f'<link rel="canonical" href="{url}">',
         f'<link rel="alternate" hreflang="en" href="{SITE + PAGES[name]["en"]}">',
         f'<link rel="alternate" hreflang="fr" href="{SITE + PAGES[name]["fr"]}">',
