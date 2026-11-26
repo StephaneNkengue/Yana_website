@@ -151,7 +151,7 @@ em { font-style: normal; color: var(--accent); }
   font-weight: 700; font-size: 0.92rem; white-space: nowrap; animation: float-y 6s ease-in-out infinite;
 }
 .mood-float.m1 { top: 12%; left: -4%; }
-.mood-float.m2 { top: 46%; right: -6%; animation-delay: -2s; }
+.mood-float.m2 { top: 68%; right: -6%; animation-delay: -2s; }
 .mood-float.m3 { bottom: 10%; left: 0; animation-delay: -4s; }
 @keyframes float-y { 0%, 100% { transform: translateY(0); } 50% { transform: translateY(-10px); } }
 
